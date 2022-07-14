@@ -13,3 +13,111 @@
  *= require_tree .
  *= require_self
  */
+ .item-a {
+    grid-area: header;
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(80, 82, 82);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(194, 190, 190);
+    font-size: 25px;
+ }
+
+ .item-b {
+    grid-area: nav;
+    background-color: rgb(5, 39, 133);
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+ .item-c {
+    grid-area: main;
+    display: block;
+    text-align: center;
+    padding: 20px 0px;
+    background-color: lightgray;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+ .item-d {
+    grid-area: footer;
+    display: block;
+    text-align: center;
+    background-color: black;
+    padding: 10px;
+    color: white;
+    padding: 15px 0;
+ }
+ .container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 150px auto auto 50px;
+    grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+    justify-items: stretch;
+    align-items: stretch;
+    gap: 1px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    display: block;
+    text-align: center;
+    padding: 15px;
+}
+
+.link {
+    color: white;
+    padding: 0 20px;
+    text-decoration: none
+}
+
+.link:hover {
+    color: red;
+}
+
+input {
+    background-color:rgb(5, 39, 133);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+input:hover {
+    background-color: white;
+    border: none;
+    color: rgb(5, 39, 133);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+form {
+    padding: 10px 30px;
+}
+
+form.text_field {
+    padding: 15px 32px;
+}

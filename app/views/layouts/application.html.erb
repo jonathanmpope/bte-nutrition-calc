@@ -9,7 +9,16 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class= "container" >
+    <header class="item-a"><h1>BTE Nutrition Calculator</h1></header>
+    <nav class="item-b">
+      <ul>
+        <li><%= link_to "Home", "/", {:class => "link"} %><%= link_to "Somthing", "/", {:class => "link"} %></li>      
+      </ul>
+    </nav>
+    <section class = "item-c">
+      <%= yield %>
+    </section>
+    <footer class="item-d"> copyright Building the Elite 2022 </footer>
   </body>
 </html>
