@@ -53,7 +53,7 @@ class Person < ApplicationRecord
     end
 
     def fc_pref_conversion
-        fc_pref == "fat" ? @fc_pref = 0.7 : nil 
+        fc_pref == "fats" ? @fc_pref = 0.7 : nil 
         fc_pref == "carbs" ? @fc_pref = 0.5 : nil 
         fc_pref == "equal mix" ? @fc_pref = 0.6 : nil 
     end

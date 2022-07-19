@@ -20,9 +20,17 @@ RSpec.describe Person, type: :model do
     end 
 
     describe 'instance methods' do 
-        describe 'mutlipier calc' do 
-            it 'does ' do 
-
+        describe 'goal calc' do 
+            it 'turns a goal in a goal multiplier' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
+                expect(person.goal_calc).to eq(17)
+            end 
+        end
+        
+        describe 'activity_level_calc' do 
+            it 'turns a activity level into an al multiplier' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
+                expect(person.activity_level_calc).to eq(1.075)
             end 
         end 
     end         
