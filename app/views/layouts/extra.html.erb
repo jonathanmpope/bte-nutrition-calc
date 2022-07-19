@@ -1,0 +1,45 @@
+ <%= form.radio_button :bodycomp, '<10', required: true %>
+    <%= form.label :bodycomp, "Less than 10%" %>
+    <%= form.radio_button :bodycomp, '10-15' %>
+    <%= form.label :bodycomp, "10-15%" %>
+    <%= form.radio_button :bodycomp, '16-20' %>
+    <%= form.label :bodycomp, "16-20%" %>
+    <%= form.radio_button :bodycomp, '20+' %>
+    <%= form.label :bodycomp, "Over 20%" %>
+
+
+
+    <%= form.radio_button :activity_level, 'low', required: true %>
+    <%= form.label :activity_level, "Low" %>
+    <%= form.radio_button :activity_level, 'moderate' %>
+    <%= form.label :activity_level, "Moderate" %>
+    <%= form.radio_button :activity_level, 'high' %>
+    <%= form.label :activity_level, "High" %>
+
+
+    <%= form.radio_button :training_load, 'sub4', required: true %>
+    <%= form.label :training_load, "4 Hours or Less" %>
+    <%= form.radio_button :training_load, '5-8' %>
+    <%= form.label :training_load, "5 to 8 Hours" %>
+    <%= form.radio_button :training_load, '9-12' %>
+    <%= form.label :training_load, "9 to 12 Hours" %>
+    <%= form.radio_button :training_load, '12+' %>
+    <%= form.label :training_load, "12+ Hours" %>
+
+
+    <%= form.radio_button :fc_pref, 'carbs', required: true %>
+    <%= form.label :fc_pref, "Prefer More Carbs" %>
+    <%= form.radio_button :fc_pref, 'fats' %>
+    <%= form.label :fc_pref, "Prefer More Fats" %>
+    <%= form.radio_button :fc_pref, 'equal mix' %>
+    <%= form.label :fc_pref, "Equal Mix" %>
+
+    <%= form.radio_button :goal, 'performance', required: true %>
+    <%= form.label :goal, "Performance" %>
+    <p>You care mostly about recovering from training for improved performance and aren't trying to make large body composition changes.</p>
+    <%= form.radio_button :goal, 'fat loss' %>
+    <%= form.label :goal, "Fat Loss" %>
+    <p>Your main goal is to lose bodyfat, and are willing to accept slightly reduced performance in the pursuit of this.</p>
+    <%= form.radio_button :goal, 'muscle gain' %>
+    <%= form.label :goal, "Muscle Gain" %>
+    <p>You are looking to gain muscle, and your training is aligned to support this.</p>

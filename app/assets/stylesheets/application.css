@@ -23,14 +23,14 @@
     padding-bottom: 20px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: rgb(194, 190, 190);
-    font-size: 25px;
+    font-size: 35px;
     background-color: black;
  }
 
  .item-b {
     grid-area: nav;
     font-size: 30px;
-    background-color: darkblue;
+    background-color: #F5A623;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
  }
 
@@ -55,7 +55,7 @@
  .container {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 150px auto auto 50px;
+    grid-template-rows: 200px auto auto 50px;
     grid-template-areas:
             "header"
             "nav"
@@ -66,23 +66,31 @@
     gap: 1px;
 }
 
-ul {
+/* ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+} */
+
+ul {
+    font-size: 15px;
+    color: white;
+    list-style-position: inside;
 }
 
 li {
     display: block;
     text-align: center;
-    padding: 15px;
+    padding: 5px;
 }
 
 .link {
     color: white;
     padding: 0 20px;
-    text-decoration: none
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .link:hover {
@@ -90,30 +98,23 @@ li {
 }
 
 input {
-    background-color:rgb(5, 39, 133);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
+    font-size: 20px;
     font-weight: bold;
+    background-color: #F5A623;
+    border: 0;
+    color: #333;
+    border-radius: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 4px;
 }
 
 input:hover {
-    background-color: white;
-    border: none;
-    color: rgb(5, 39, 133);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 8px;
-    font-weight: bold;
+    background-color: black;
+    color: white;
 }
+
 
 form {
     padding: 10px 30px;
@@ -122,3 +123,47 @@ form {
 form.text_field {
     padding: 15px 32px;
 }
+
+p {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+}
+
+ h1 {
+     font-size: 30px;
+     font-weight: bold;
+     color: white;
+     text-align: center;
+ }
+
+ h2 {
+     font-size: 25px;
+     font-weight: bold;
+     color: #F5A623;
+     text-align: center;
+     padding: 5px;
+ }
+
+label {
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+ select {
+     width: 400px;
+     padding: 12px 20px;
+     margin: 8px 0;
+     box-sizing: border-box;
+     color: black;
+     font-size: 17px;
+    font-weight: bold;
+     border: rgb(221, 221, 221) solid;
+    background-color: #F5A623;
+    border-radius: 4px;
+ }
