@@ -79,11 +79,11 @@ RSpec.describe Person, type: :model do
             end 
         end
 
-         describe 'phase_create' do 
-            it 'creates a phase' do 
+         describe 'fat_calc' do 
+            it 'calculates fats' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996, kcal:4035.1199999999994)
-                person.calculations 
-                expect(person.phases[0].class).to eq(Phase)
+                person.fc_pref_conversion
+                expect(person.fat_calc).to eq({:fat_grams=>140.0, :fat_cals=>1260.0, :fat_percent=>31.225837149824542})
             end 
         end
     end         
