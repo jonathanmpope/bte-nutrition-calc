@@ -4,7 +4,8 @@ class PersonsController < ApplicationController
     end 
 
     def create 
-        @person = Person.create(person_params)
+        person = Person.create(person_params)
+        person.multiplier_calc
         # binding.pry 
     end 
 

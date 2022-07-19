@@ -20,7 +20,12 @@ RSpec.describe Person, type: :model do
     end 
 
     describe 'instance methods' do 
-    end 
+        describe 'mutlipier calc' do 
+            it 'does ' do 
+
+            end 
+        end 
+    end         
 
     describe 'class methods' do 
     end 
