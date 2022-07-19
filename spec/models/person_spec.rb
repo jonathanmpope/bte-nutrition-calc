@@ -33,6 +33,13 @@ RSpec.describe Person, type: :model do
                 expect(person.activity_level_calc).to eq(1.075)
             end 
         end 
+
+        describe 'training_load_calc ' do 
+            it 'turns training load into a tl multiplier' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
+                expect(person.training_load_calc ).to eq(1.2)
+            end 
+        end 
     end         
 
     describe 'class methods' do 
