@@ -37,14 +37,21 @@ RSpec.describe Person, type: :model do
         describe 'training_load_calc ' do 
             it 'turns training load into a tl multiplier' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
-                expect(person.training_load_calc ).to eq(1.2)
+                expect(person.training_load_calc).to eq(1.2)
             end 
         end 
 
         describe 'lean_mass_calc' do 
             it 'calculates lean mass' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
-                expect(person.lean_mass_calc ).to eq(184.0)
+                expect(person.lean_mass_calc).to eq(184.0)
+            end 
+        end 
+
+         describe 'fc_pref_conversion' do 
+            it 'turns fat or carb preference into a multiplier' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
+                expect(person.fc_pref_conversion).to eq(0.7)
             end 
         end 
     end         

@@ -16,7 +16,7 @@ RSpec.describe 'the person new page' do
         choose(id="bodycomp_10")
         choose(id="activity_level_moderate")
         choose(id="training_load_9-12")
-        choose(id="fc_pref_fat")
+        choose(id="fc_pref_fats")
         choose(id="goal_performance")
         click_button("Submit")
 
@@ -33,7 +33,7 @@ RSpec.describe 'the person new page' do
         choose(id="bodycomp_10")
         choose(id="activity_level_moderate")
         choose(id="training_load_9-12")
-        choose(id="fc_pref_fat")
+        choose(id="fc_pref_fats")
         click_button("Submit")
 
         expect(current_path).to eq('/')
