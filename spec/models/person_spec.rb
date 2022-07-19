@@ -94,6 +94,16 @@ RSpec.describe Person, type: :model do
                 expect(person.protein_calc).to eq({:protein_grams=>220.00000000000003, :protein_cals=>880.0000000000001, :protein_percent=>21.808521184004448})
             end 
         end
+
+         describe 'carb_calc' do 
+            it 'calculates carbs' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996, kcal:4035.1199999999994)
+                person.fc_pref_conversion
+                person.fat_calc
+                person.protein_calc
+                expect(person.carb_calc).to eq({:carb_grams=>473.77999999999986, :carb_cals=>1895.1199999999994, :carb_percent=>46.96564166617101})
+            end 
+        end
     end         
 
     describe 'class methods' do 
