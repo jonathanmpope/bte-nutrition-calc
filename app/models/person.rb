@@ -19,6 +19,7 @@ class Person < ApplicationRecord
         lean_mass_calc
         @multiplier = @goal_mult * @ac_mult * @tl_mult
         total_kcal_calc
+        @multiplier
     end 
 
     def goal_calc

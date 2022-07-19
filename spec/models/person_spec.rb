@@ -63,6 +63,13 @@ RSpec.describe Person, type: :model do
                 expect(person.total_kcal_calc).to eq(4035.1199999999994)
             end 
         end
+
+        describe 'multiplier_calc' do 
+            it 'creates a multiplier' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
+                expect(person.multiplier_calc).to eq(21.929999999999996)
+            end 
+        end
     end         
 
     describe 'class methods' do 
