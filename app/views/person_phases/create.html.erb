@@ -1,1 +1,3 @@
 <p><%= @person.name %></p>
+
+<%= pie_chart Phase.select(:fat_percent, :protein_percent, :carb_percent).where("person_id = ?", @person.id)[0], round: 0, legend: false, suffix: "%" %>

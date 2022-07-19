@@ -25,6 +25,7 @@ RSpec.describe 'the person new page' do
         # choose(id="fc_pref_fats")
         # choose(id="goal_performance")
         click_button("Submit")
+         save_and_open_page
 
         expect(page).to have_content("Testy")
     end 
