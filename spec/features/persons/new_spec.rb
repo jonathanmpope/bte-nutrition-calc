@@ -20,7 +20,7 @@ RSpec.describe 'the person new page' do
         choose(id="goal_performance")
         click_button("Submit")
 
-        expect(page).to have_content("BTE Nutrition Calculator")
+        expect(page).to have_content("Testy")
     end 
 
 end 

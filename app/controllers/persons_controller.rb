@@ -4,9 +4,9 @@ class PersonsController < ApplicationController
     end 
 
     def create 
-        person = Person.create(person_params)
-        person.multiplier_calc
-        # binding.pry 
+        @person = Person.create(person_params)
+        @person.multiplier_calc
+        redirect_to "/#{@person.id}/results"
     end 
 
     private 

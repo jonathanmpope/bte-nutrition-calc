@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Phase1.destroy_all 
-Person.destroy_all
+# Phase1.destroy_all 
+# Person.destroy_all
 
-Person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"< 10%", lean_mass:184.0, goal:"Performance", activity_level:"4-6 hours", training_load:"10-15 hours", fc_pref:"fats", multiplier:12.64, kcal:3294)
+# Person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"< 10%", lean_mass:184.0, goal:"Performance", activity_level:"4-6 hours", training_load:"10-15 hours", fc_pref:"fats", multiplier:12.64, kcal:3294)
