@@ -61,6 +61,7 @@ class Person < ApplicationRecord
     def total_kcal_calc
         @total_kcal = (@lean_mass * @multiplier)
         update_person(@total_kcal, @lean_mass, @multiplier)
+        @total_kcal
     end 
 
     def update_person(kcal, lean_mass, multiplier)

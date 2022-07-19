@@ -54,6 +54,15 @@ RSpec.describe Person, type: :model do
                 expect(person.fc_pref_conversion).to eq(0.7)
             end 
         end 
+
+         describe 'total_kcal_calc' do 
+            it 'calculates total kcal' do 
+                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64, kcal:3294.33)
+                person.lean_mass_calc
+                person.multiplier_calc
+                expect(person.total_kcal_calc).to eq(4035.1199999999994)
+            end 
+        end
     end         
 
     describe 'class methods' do 
