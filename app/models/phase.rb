@@ -1,4 +1,4 @@
-class Phase1 < ApplicationRecord
+class Phase < ApplicationRecord
     belongs_to :person
     validates_presence_of :protein_grams
     validates_presence_of :protein_cals
@@ -9,4 +9,5 @@ class Phase1 < ApplicationRecord
     validates_presence_of :fat_grams
     validates_presence_of :fat_cals
     validates_presence_of :fat_percent
+    validates_presence_of :name
 end 

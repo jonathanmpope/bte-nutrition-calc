@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_14_021412) do
+ActiveRecord::Schema.define(version: 2022_07_19_025033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2022_07_14_021412) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "phase1s", force: :cascade do |t|
+  create_table "phases", force: :cascade do |t|
     t.float "protein_grams"
     t.float "protein_cals"
     t.float "protein_percent"
@@ -41,9 +41,12 @@ ActiveRecord::Schema.define(version: 2022_07_14_021412) do
     t.float "fat_grams"
     t.float "fat_cals"
     t.float "fat_percent"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "person_id"
-    t.index ["person_id"], name: "index_phase1s_on_person_id"
+    t.index ["person_id"], name: "index_phases_on_person_id"
   end
 
-  add_foreign_key "phase1s", "people"
+  add_foreign_key "phases", "people"
 end

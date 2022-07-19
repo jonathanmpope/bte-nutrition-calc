@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Person, type: :model do 
     describe 'relationships' do
-        it { should have_one :phase1 }
+        it { should have_many :phases }
     end 
 
     describe 'validations' do 

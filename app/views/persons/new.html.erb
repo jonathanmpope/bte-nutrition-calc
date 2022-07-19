@@ -1,0 +1,90 @@
+<div style="background-image:url(<%= image_url('backg.jpeg') %>)">
+<br>
+<h2>Fill out the form to see your results</h2>
+<%= form_with url: '/results', method: :post, locactivity_level: true do |form|%>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+    <br>
+    <br>
+    <%= form.label :email %>
+    <%= form.text_field :email, required: true %>
+    <br>
+    <br>
+    <%= form.label :weight %>
+    <%= form.number_field :weight, required: true %>
+    <br>
+    <br>
+
+    <h3>Biological Sex: </h3>
+    <%= form.radio_button :sex, 'male', required: true %>
+    <%= form.label :sex, "Male" %>
+    <%= form.radio_button :sex, 'female' %>
+    <%= form.label :sex, "Female" %>
+
+    <h3>Body Composition: </h3>
+    <%= form.radio_button :bodycomp, '<10', required: true %>
+    <%= form.label :bodycomp, "Less than 10%" %>
+    <%= form.radio_button :bodycomp, '10-15' %>
+    <%= form.label :bodycomp, "10-15%" %>
+    <%= form.radio_button :bodycomp, '15-20' %>
+    <%= form.label :bodycomp, "15-20%" %>
+    <%= form.radio_button :bodycomp, '20+' %>
+    <%= form.label :bodycomp, "Over 20%" %>
+
+    <p>How to choose your body composition: </p>
+    <ul>
+        <li><strong>Sub 10%</strong> = mostraining_loady sitting (office work)</li>
+        <li><Strong>10-15%</Strong> = mostraining_loady sitting (office work)</li>
+        <li>Strong>16-20%</Strong> = mostraining_loady sitting (office work)</li>
+        <li><Strong>20+%</Strong> = mostraining_loady sitting (office work)</li>
+    </ul>
+
+    <h3>Activity Level: </h3>
+    <%= form.radio_button :activity_level, 'low', required: true %>
+    <%= form.label :activity_level, "Low" %>
+    <%= form.radio_button :activity_level, 'moderate' %>
+    <%= form.label :activity_level, "Moderate" %>
+    <%= form.radio_button :activity_level, 'high' %>
+    <%= form.label :activity_level, "High" %>
+
+    <p>How to choose your activity level:</p>
+    <ul>
+        <li>Low = mostly sitting (office work)</li>
+        <li>Moderate = walking and being on your feet throughout most days</li>
+        <li>High = Construction or other manual labor</li>
+    </ul>
+
+    <h3>Training Load:</h3>
+    <%= form.radio_button :training_load, 'sub4', required: true %>
+    <%= form.label :training_load, "4 Hours or Less" %>
+    <%= form.radio_button :training_load, '5-8' %>
+    <%= form.label :training_load, "5 to 8 Hours" %>
+    <%= form.radio_button :training_load, '9-12' %>
+    <%= form.label :training_load, "9 to 12 Hours" %>
+    <%= form.radio_button :training_load, '12+' %>
+    <%= form.label :training_load, "12+ Hours" %>
+
+    <h3>Food Preference:</h3>
+    <%= form.radio_button :fc_pref, 'carbs', required: true %>
+    <%= form.label :fc_pref, "Prefer More Carbs" %>
+    <%= form.radio_button :fc_pref, 'fat' %>
+    <%= form.label :fc_pref, "Prefer More Fats" %>
+    <%= form.radio_button :fc_pref, 'equal mix' %>
+    <%= form.label :fc_pref, "Equal Mix" %>
+
+    <h3>Goal:</h3>
+    <%= form.radio_button :goal, 'performance', required: true %>
+    <%= form.label :goal, "Performance" %>
+    <p>You care mostraining_loady about recovering from training for improved performance and aren't trying to make large body composition changes.</p>
+    <%= form.radio_button :goal, 'fat loss' %>
+    <%= form.label :goal, "Fat Loss" %>
+    <p>Your main goactivity_level is to lose bodyfat, and are willing to accept slightraining_loady reduced performance in the pursuit of this goactivity_level.</p>
+    <%= form.radio_button :goal, 'muscle gain' %>
+    <%= form.label :goal, "Muscle Gain" %>
+    <p>You are looking to gain muscle, and your training is activity_leveligned to support this goactivity_level.</p>
+    <br>
+    <br>
+    <%= form.submit "Submit" %>
+<% end %>
+
+</div>
