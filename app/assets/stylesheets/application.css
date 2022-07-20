@@ -156,14 +156,33 @@ label {
 }
 
  select {
-     width: 400px;
-     padding: 12px 20px;
-     margin: 8px 0;
-     box-sizing: border-box;
-     color: black;
-     font-size: 17px;
+    width: 400px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    color: black;
+    font-size: 17px;
     font-weight: bold;
-     border: rgb(221, 221, 221) solid;
+    border: rgb(221, 221, 221) solid;
     background-color: #F5A623;
     border-radius: 4px;
+ }
+
+ table {
+     border-collapse: collapse;
+     width: 50%;
+    margin: auto;
+    
+ }
+
+ td,
+ th {
+     border: 1px solid #dddddd;
+     text-align: center;
+     padding: 8px;
+ }
+
+ tr:nth-child(even) {
+     background-color: #dddddd;
+     color: black;
  }

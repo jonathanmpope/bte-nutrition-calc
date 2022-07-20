@@ -1,7 +1,7 @@
 <div style="background-image:url(<%= image_url('backg.jpeg') %>)">
 <br>
 <h1>Fill out the form to see your results</h1>
-<%= form_with url: '/', method: :post, locactivity_level: true do |form|%>
+<%= form_with url: '/', method: :post, local: true do |form|%>
     <%= form.label :name %>
     <%= form.text_field :name, required: true %>
     <br>
