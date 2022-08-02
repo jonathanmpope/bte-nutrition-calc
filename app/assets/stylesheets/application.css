@@ -66,13 +66,6 @@
     gap: 1px;
 }
 
-/* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-} */
-
 ul {
     font-size: 15px;
     color: white;
@@ -100,9 +93,10 @@ li {
 input {
     font-size: 20px;
     font-weight: bold;
-    background-color: #F5A623;
+    color: black;
+    background-color: #fff;
+    opacity: 1;
     border: 0;
-    color: #333;
     border-radius: 0;
     margin-left: auto;
     margin-right: auto;
@@ -111,8 +105,7 @@ input {
 }
 
 input:hover {
-    background-color: black;
-    color: white;
+    background-color: rgb(179, 178, 178);
 }
 
 
@@ -123,6 +116,11 @@ form {
 form.text_field {
     padding: 15px 32px;
 }
+
+/* input.submit {
+    background-color: #F5A623;
+    color: black;
+} */
 
 p {
     font-size: 17px;
@@ -156,15 +154,17 @@ label {
 }
 
  select {
+    color: black;
+    background-color: #fff;
+    opacity: .9;
     width: 400px;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    color: black;
     font-size: 17px;
     font-weight: bold;
     border: rgb(221, 221, 221) solid;
-    background-color: #F5A623;
+    /* background-color: #F5A623; */
     border-radius: 4px;
  }
 
@@ -186,3 +186,9 @@ label {
      background-color: #dddddd;
      color: black;
  }
+
+/* radio {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+    padding-left: 1.875rem !important;
+} */

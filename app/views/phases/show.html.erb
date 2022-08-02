@@ -1,9 +1,9 @@
 <div style="background-image:url(<%= image_url('backg.jpeg') %>)">
 <br>
-<h1>Phase One Macros</h1>
+<h1><%= @phase.name.titleize %> Phase Macros</h1>
 <h2><%= @person.name %></h2>
 <h3>Goal: <%= @person.goal.titleize %></h3>
-<h3>Total calories: <%= @phase1.kcal.round(0) %></h3>
+<h3>Total calories: <%= @phase.kcal.round(0) %></h3>
 
 <table>
     <tr>
@@ -14,26 +14,26 @@
     </tr>
     <tr>
         <td>Protein</td>
-        <td><%= @phase1.protein_grams.round(0) %></td>
-        <td><%= @phase1.protein_cals.round(0) %></td>
-        <td><%= @phase1.protein_percent.round(0) %></td>
+        <td><%= @phase.protein_grams.round(0) %></td>
+        <td><%= @phase.protein_cals.round(0) %></td>
+        <td><%= @phase.protein_percent.round(0) %></td>
     </tr>
     <tr>
         <td>Fats</td>
-        <td><%= @phase1.fat_grams.round(0) %></td>
-        <td><%= @phase1.fat_cals.round(0) %></td>
-        <td><%= @phase1.fat_percent.round(0) %></td>
+        <td><%= @phase.fat_grams.round(0) %></td>
+        <td><%= @phase.fat_cals.round(0) %></td>
+        <td><%= @phase.fat_percent.round(0) %></td>
     </tr>
     <tr>
         <td>Carbohydrates</td>
-        <td><%= @phase1.carb_grams.round(0) %></td>
-        <td><%= @phase1.carb_cals.round(0) %></td>
-        <td><%= @phase1.carb_percent.round(0) %></td>
+        <td><%= @phase.carb_grams.round(0) %></td>
+        <td><%= @phase.carb_cals.round(0) %></td>
+        <td><%= @phase.carb_percent.round(0) %></td>
     </tr>
 </table>
 <br>
 <h3>Visual macro breakdown (hover for details)</h3>
-<%= pie_chart Phase.select(:fat_percent, :protein_percent, :carb_percent).where("person_id = ? AND name = ?", @person.id, 'performance')[0], round: 0, suffix: "%", legend: false  %>
+<%= pie_chart Phase.select(:fat_percent, :protein_percent, :carb_percent).where("person_id = ? AND id = ?", @person.id, @phase.id)[0], round: 0, suffix: "%", legend: false  %>
 <br>
 <h2>Macros: 3 Meals Per Day </h2>
 <table>
@@ -44,18 +44,18 @@
     </tr>
     <tr>
         <td>Protein</td>
-        <td><%= @phase1.macros_per_meal_3[:protein_grams].round(0) %></td>
-        <td><%= ((@phase1.protein_grams / 25) / 3).round(1) %></td>
+        <td><%= @phase.macros_per_meal_3[:protein_grams].round(0) %></td>
+        <td><%= ((@phase.protein_grams / 25) / 3).round(1) %></td>
     </tr>
      <tr>
         <td>Fats</td>
-        <td><%= @phase1.macros_per_meal_3[:fat_grams].round(0) %></td>
-        <td><%= ((@phase1.fat_grams / 10) / 3).round(1) %></td>
+        <td><%= @phase.macros_per_meal_3[:fat_grams].round(0) %></td>
+        <td><%= ((@phase.fat_grams / 10) / 3).round(1) %></td>
     </tr>
      <tr>
         <td>Carbohydrates</td>
-        <td><%= @phase1.macros_per_meal_3[:carb_grams].round(0) %></td>
-        <td><%= ((@phase1.carb_grams / 30) / 3).round(1) %></td>
+        <td><%= @phase.macros_per_meal_3[:carb_grams].round(0) %></td>
+        <td><%= ((@phase.carb_grams / 30) / 3).round(1) %></td>
     </tr>
 </table>
 <br>
@@ -68,18 +68,18 @@
     </tr>
     <tr>
         <td>Protein</td>
-        <td><%= @phase1.macros_per_meal_4[:protein_grams].round(0) %></td>
-        <td><%= ((@phase1.protein_grams / 25) / 4).round(1) %></td>
+        <td><%= @phase.macros_per_meal_4[:protein_grams].round(0) %></td>
+        <td><%= ((@phase.protein_grams / 25) / 4).round(1) %></td>
     </tr>
      <tr>
         <td>Fats</td>
-        <td><%= @phase1.macros_per_meal_4[:fat_grams].round(0) %></td>
-        <td><%= ((@phase1.fat_grams / 10) / 4).round(1) %></td>
+        <td><%= @phase.macros_per_meal_4[:fat_grams].round(0) %></td>
+        <td><%= ((@phase.fat_grams / 10) / 4).round(1) %></td>
     </tr>
      <tr>
         <td>Carbohydrates</td>
-        <td><%= @phase1.macros_per_meal_4[:carb_grams].round(0) %></td>
-        <td><%= ((@phase1.carb_grams / 30) / 4).round(1) %></td>
+        <td><%= @phase.macros_per_meal_4[:carb_grams].round(0) %></td>
+        <td><%= ((@phase.carb_grams / 30) / 4).round(1) %></td>
     </tr>
 </table>
 <br>
@@ -92,18 +92,25 @@
     </tr>
     <tr>
         <td>Protein</td>
-        <td><%= @phase1.macros_per_meal_5[:protein_grams].round(0) %></td>
-        <td><%= ((@phase1.protein_grams / 25) / 5).round(1) %></td>
+        <td><%= @phase.macros_per_meal_5[:protein_grams].round(0) %></td>
+        <td><%= ((@phase.protein_grams / 25) / 5).round(1) %></td>
     </tr>
      <tr>
         <td>Fats</td>
-        <td><%= @phase1.macros_per_meal_5[:fat_grams].round(0) %></td>
-        <td><%= ((@phase1.fat_grams / 10) / 5).round(1) %></td>
+        <td><%= @phase.macros_per_meal_5[:fat_grams].round(0) %></td>
+        <td><%= ((@phase.fat_grams / 10) / 5).round(1) %></td>
     </tr>
      <tr>
         <td>Carbohydrates</td>
-        <td><%= @phase1.macros_per_meal_5[:carb_grams].round(0) %></td>
-        <td><%= ((@phase1.carb_grams / 30) / 5).round(1) %></td>
+        <td><%= @phase.macros_per_meal_5[:carb_grams].round(0) %></td>
+        <td><%= ((@phase.carb_grams / 30) / 5).round(1) %></td>
     </tr>
 </table>
 <br>
+<% if @phase.name == 'performance' %>
+    <%= button_to "Keto Phase Macros", "/#{@person.id}/results/#{@person.phases[1].id}", method: :get %>
+<% elsif @phase.name == 'keto' %>
+    <%= button_to "IF Phase Macros", "/#{@person.id}/results/#{@person.phases[2].id}", method: :get %>
+<% elsif @phase.name == 'Intermittent fasting - fasting days' %>
+    <%= button_to "IF Phase - Non Fasting Days Macros", "/#{@person.id}/results/#{@person.phases[3].id}", method: :get %>
+<% end %>
