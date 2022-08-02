@@ -1,5 +1,3 @@
 class PersonPhasesController < ApplicationController 
-    
-   
 
 end 
