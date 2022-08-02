@@ -5,9 +5,13 @@ class PersonsController < ApplicationController
 
     def create 
         @person = Person.create(person_params)
-        @person.multiplier_calc
-        redirect_to "/#{@person.id}/results"
+        update
     end 
+
+    def update
+        @person.update(multiplier: @person.multiplier_calc, lean_mass: @person.lean_mass_calc)
+        redirect_to "/#{@person.id}/results"
+    end
 
     private 
     def person_params

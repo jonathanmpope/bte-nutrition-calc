@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/', to: 'persons#new'
   post '/', to: 'persons#create'
 
-  get '/:person_id/results', to: 'person_phases#create'
+  get '/:person_id/results', to: 'phases#show'
 end
 
 

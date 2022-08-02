@@ -11,7 +11,6 @@ class CreatePerson < ActiveRecord::Migration[5.2]
       t.string :training_load
       t.string :fc_pref
       t.float :multiplier
-      t.float :kcal
       t.timestamps
     end
   end

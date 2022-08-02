@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2022_07_19_025033) do
     t.string "training_load"
     t.string "fc_pref"
     t.float "multiplier"
-    t.float "kcal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_025033) do
     t.float "fat_cals"
     t.float "fat_percent"
     t.string "name"
+    t.float "kcal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "person_id"

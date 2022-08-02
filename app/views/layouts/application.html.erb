@@ -11,17 +11,17 @@
 
   <body class= "container" >
     <header class="item-a">
-      <img id="compass" src="<%= asset_path('Compass.png') %>" width="100" height="100">
+      <img id="compass" src="<%= asset_path('BTE Nutrition Calc.png') %>" width="500" height="150">
           <h1>BTE Nutrition Calculator</h1> <br>
     </header>
     <nav class="item-b">
       <ul>
-        <li><%= link_to "Home", "/", {:class => "link"} %><%= link_to "Somthing", "/", {:class => "link"} %></li>      
+        <li><%= link_to "Start Over", "/", {:class => "link"} %><%= link_to "BTE Main Site", "/", {:class => "link"} %></li>      
       </ul>
     </nav>
     <section class = "item-c">
       <%= yield %>
     </section>
-    <footer class="item-d"> Copyright Building the Elite 2022 </footer>
+    <footer class="item-d"> © 2022 Building the Elite, LLC  </footer>
   </body>
 </html>

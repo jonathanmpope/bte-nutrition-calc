@@ -11,7 +11,8 @@ class CreatePhases < ActiveRecord::Migration[5.2]
       t.float :fat_cals
       t.float :fat_percent
       t.string :name
-
+      t.float :kcal
+      
       t.timestamps 
     end
   end
