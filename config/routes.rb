@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   get '/admins/new', to: 'admins#new'
   post '/admins/new', to: 'admins#create'
+  
+  get '/admins/login', to: 'admins#login_form'
+  post '/admins/login', to: 'admins#login'
+
   get '/admins/:id', to: 'admins#index'
 
   get '/:person_id/results', to: 'phases#create'
