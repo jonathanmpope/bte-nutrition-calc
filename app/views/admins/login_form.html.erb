@@ -1,0 +1,9 @@
+<%= form_with url: "/admins/login", local: true do |form|%>
+    <%= form.label :username %>
+    <%= form.text_field :username, required: true %>
+    <br>
+    <%= form.label :password %>
+    <%= form.text_field :password, required: true %>
+    <br>
+    <%= form.submit "Login" %>
+<% end %>

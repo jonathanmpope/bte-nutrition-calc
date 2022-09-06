@@ -1,0 +1,17 @@
+<%= form_with model: @admin, local: true do |form| %>
+    <%= form.label :username %>
+    <%= form.text_field :username, required: true %>
+    <br>
+    <br>
+    <%= form.label :email %>
+    <%= form.text_field :email, required: true %>
+    <br>
+    <br>
+    <%= form.label :password %>
+    <%= form.text_field :password, required: true %>
+    <br>
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation, required: true %>
+    <br>
+    <%= form.submit "Create Admin" %>
+<% end %>

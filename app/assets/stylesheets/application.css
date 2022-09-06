@@ -35,6 +35,7 @@
  }
 
  .item-c {
+    background-color: black;
     grid-area: main;
     display: block;
     text-align: center;

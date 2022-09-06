@@ -1,0 +1,13 @@
+<% if @current_admin != nil %>
+    <h2>Welcome, <%=@current_admin.username%>!</h2>
+<% end %>
+
+<h3>Users</h3>
+<% @users.each do |user| %>
+<p> user.name </p>
+<% end %> 
+
+<h3>Admins Pending Approval</h3>
+<% @admins_pending_approval.each do |admin| %>
+<p> <% admin.username %> </p>
+<% end %>

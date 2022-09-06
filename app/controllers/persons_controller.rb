@@ -5,7 +5,12 @@ class PersonsController < ApplicationController
 
     def create 
         @person = Person.create(person_params)
-        update
+        if @person.save 
+            update
+        else 
+         redirect_to "/"
+         flash[:error] = @person.errors.full_messages
+        end 
     end 
 
     def update
