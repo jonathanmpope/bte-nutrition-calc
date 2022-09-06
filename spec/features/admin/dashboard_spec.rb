@@ -19,4 +19,12 @@ RSpec.describe "Admin Dashboard page" do
 
     expect(page).to have_content("Welcome, #{username}!")
   end
+
+  it "allows you to view content if you're an approved admin" do
+    admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 0)
+
+    visit '/admins/dashboard'
+
+    expect(page).to have_content("Sorry, you must be a logged in and approved admin.")
+  end
 end 

@@ -1,8 +1,8 @@
 class Admins::DashboardController < ApplicationController
     before_action :require_approved 
 
-    def index 
-        @admin = Admin.find(session[:admin_id])
+    def index
+        current_admin
         @users = Person.all 
     end 
 

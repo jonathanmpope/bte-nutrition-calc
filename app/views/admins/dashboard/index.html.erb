@@ -1,4 +1,6 @@
-<h3>Welcome, <%=@admin.username%>!</h3>
+<% if @current_admin != nil %>
+    <h3>Welcome, <%=@current_admin.username%>!</h3>
+<% end %>
 <%# <% @users.each do |user|%>
 <p> </p>
 <%# <% end %> %> %>
