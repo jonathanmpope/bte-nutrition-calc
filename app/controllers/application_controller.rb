@@ -9,5 +9,4 @@ class ApplicationController < ActionController::Base
     def current_approved_admin?
         current_admin && current_admin.approved?
     end 
-
 end

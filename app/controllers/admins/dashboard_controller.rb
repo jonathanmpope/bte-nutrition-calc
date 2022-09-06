@@ -4,6 +4,7 @@ class Admins::DashboardController < ApplicationController
     def index
         current_admin
         @users = Person.all 
+        @admins_pending_approval = Admin.admins_pending_approval
     end 
 
     private 
