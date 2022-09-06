@@ -4,7 +4,7 @@ class CreateAdmin < ActiveRecord::Migration[5.2]
       t.string :username
       t.string :email
       t.string :password_digest
-      t.string :status, default: 0
+      t.integer :status, default: 0
 
       t.timestamps
     end
