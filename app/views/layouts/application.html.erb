@@ -20,6 +20,9 @@
       </ul>
     </nav>
     <section class = "item-c">
+      <% flash.each do |name, msg|%>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
       <%= yield %>
     </section>
     <footer class="item-d"> © 2022 Building the Elite, LLC  </footer>

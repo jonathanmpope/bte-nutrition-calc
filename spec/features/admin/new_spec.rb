@@ -18,8 +18,8 @@ RSpec.describe "Admin registration form" do
     expect(page).to have_content("Welcome, #{username}!")
   end
 
-  xit "will show an error if you're missing something" do
-    visit '/admin/new'
+  it "will show an error if you're missing something" do
+    visit '/admins/new'
 
     username = "funbucket13"
     password = "test"
@@ -30,6 +30,6 @@ RSpec.describe "Admin registration form" do
 
     click_on "Create Admin"
 
-    expect(page).to have_content("Welcome, #{username}!")
+    expect(page).to have_content("Email can't be blank")
   end
 end
