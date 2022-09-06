@@ -8,10 +8,10 @@ RSpec.describe "Admin registration form" do
     password = "test"
     email = 'test@test.com'
 
-    fill_in :username, with: username
-    fill_in :email, with: email
-    fill_in :password, with: password
-    fill_in :password_confirmation, with: password
+    fill_in :admin_username, with: username
+    fill_in :admin_email, with: email
+    fill_in :admin_password, with: password
+    fill_in :admin_password_confirmation, with: password
 
     click_on "Create Admin"
 
@@ -24,9 +24,9 @@ RSpec.describe "Admin registration form" do
     username = "funbucket13"
     password = "test"
 
-    fill_in :username, with: username
-    fill_in :password, with: password
-    fill_in :password_confirmation, with: password
+    fill_in :admin_username, with: username
+    fill_in :admin_password, with: password
+    fill_in :admin_password_confirmation, with: password
 
     click_on "Create Admin"
 

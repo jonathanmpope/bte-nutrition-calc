@@ -1,5 +1,4 @@
-<%# <%= form_with url: admins_new_path, local: true do |form| %> %>
-<%= form_with url: @admin, local: true do |form| %>
+<%= form_with model: @admin, local: true do |form| %>
     <%= form.label :username %>
     <%= form.text_field :username, required: true %>
     <br>
