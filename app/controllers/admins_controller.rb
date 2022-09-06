@@ -1,6 +1,10 @@
 class AdminsController < ApplicationController 
 
-    def index 
+    def new 
+        @admin = Admin.new
+    end 
+    
+    def show  
         @admin = Admin.find(params[:id])
     end 
 
