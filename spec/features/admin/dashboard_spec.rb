@@ -25,7 +25,7 @@ RSpec.describe "Admin Dashboard page" do
 
     visit '/admins/dashboard'
 
-    expect(page).to have_content("Sorry, you must be a logged in and approved admin.")
+    expect(page).to have_content("Sorry, you must logged in.")
   end
 
   it "has a list of admins pending approval" do

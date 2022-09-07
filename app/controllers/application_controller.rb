@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    
+
     helper_method :current_admin
 
     def current_admin
@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     end 
 
     def current_approved_admin?
-        current_admin && current_admin.approved?
+        if !current_admin || current_admin.not_approved?
+            redirect_to '/admins/dashboard'
+            flash[:alert] = "You must be an approved admin to view this page!"
+        end 
     end 
 end

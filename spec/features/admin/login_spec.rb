@@ -4,7 +4,7 @@ RSpec.describe "Admin login page" do
   it "allows you to login if you're an admin" do
     visit '/admins/login'
 
-    admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test")
+    admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test" , status: 1)
 
     username = "funbucket13"
     password = "test"
