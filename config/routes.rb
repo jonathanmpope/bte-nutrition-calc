@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/', to: 'persons#create'
 
   get '/admins/dashboard', to: 'admins/dashboard#index'
+  get '/admins/pending_admins', to: 'admins/pending#index'
 
   get '/admins/login', to: 'admins_sessions#new'
   post '/admins/login', to: 'admins_sessions#create'
