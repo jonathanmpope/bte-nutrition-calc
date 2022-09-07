@@ -1,3 +1,10 @@
+<% if current_admin %>
+    <p>You're logged in </p>
+    <%= link_to "Logout", '/logout', method: :delete %>
+<% else %>
+    <%= link_to "Register as an admin", new_admin_path %>
+<% end %>
+
 <%= form_with url: "/admins/login", local: true do |form|%>
     <%= form.label :username %>
     <%= form.text_field :username, required: true %>

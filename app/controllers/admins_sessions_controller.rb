@@ -14,4 +14,9 @@
             render :new
         end 
     end 
+
+    def destroy 
+        session.destroy
+        redirect_to '/admins/login'
+    end 
 end 

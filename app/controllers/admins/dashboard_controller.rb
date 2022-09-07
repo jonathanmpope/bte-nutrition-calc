@@ -14,5 +14,6 @@ class Admins::DashboardController < ApplicationController
 
     def require_logged_in
         flash[:error] = "Sorry, you must logged in." unless current_admin
+        redirect_to '/admins/login'
     end 
 end 

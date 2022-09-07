@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   get '/admins/login', to: 'admins_sessions#new'
   post '/admins/login', to: 'admins_sessions#create'
+  delete '/logout', to: 'admins_sessions#destroy'
 
   get '/admins/dashboard', to: 'admins/dashboard#index'
 
-  resources :admins, only: [:new, :create ]
+  resources :admins, only: [:new, :create]
 
   get '/:person_id/results', to: 'phases#create'
   get '/:person_id/results/:id', to: 'phases#show'
