@@ -32,4 +32,10 @@ RSpec.describe "Admin registration form" do
 
     expect(page).to have_content("Email can't be blank")
   end
+
+  it "will show an error if you're missing something" do
+    visit '/admins/new'
+
+    expect(page).to have_content("Login")
+  end
 end

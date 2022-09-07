@@ -1,3 +1,5 @@
+<%= link_to "Login", '/admins/login' %>
+
 <%= form_with model: @admin, local: true do |form| %>
     <%= form.label :username %>
     <%= form.text_field :username, required: true %>
