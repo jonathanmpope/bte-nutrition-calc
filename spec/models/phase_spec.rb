@@ -71,8 +71,4 @@ RSpec.describe Phase, type: :model do
             end 
         end
     end 
-
-    describe 'class methods' do 
-    end 
-
 end 

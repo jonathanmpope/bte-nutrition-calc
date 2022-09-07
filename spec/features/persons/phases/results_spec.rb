@@ -32,6 +32,28 @@ RSpec.describe 'the results page' do
         expect(page).to have_content("Macros: 4 Meals Per Day")
         expect(page).to have_content("Macros: 5 Meals Per Day")
         expect(page).to_not have_button("Keto Phase Macros")
-    end  
+    end 
+    
+    it 'should have a second page when results is selected as the goal' do
+        person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+        
+        visit "/#{person.id}/results"
+
+        expect(page).to have_button("Keto Phase Macros")
+
+        click_button("Keto Phase Macros")
+
+        expect(page).to have_content("Keto Phase Macros")
+        expect(page).to have_button("IF Phase Macros")
+
+        click_button("IF Phase Macros")
+
+        expect(page).to have_content("Intermittent Fasting Fasting Days Phase Macros")
+        expect(page).to have_button("IF Phase - Non Fasting Days Macros")
+
+        click_button("IF Phase - Non Fasting Days Macros")
+
+        expect(page).to have_content("Intermittent Fasting Non Fasting Days Phase Macros")
+    end
 
 end 
