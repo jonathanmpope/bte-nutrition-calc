@@ -1,6 +1,7 @@
 <% if current_admin %>
     <p>You're logged in </p>
     <%= link_to "Logout", '/logout', method: :delete %>
+    <%= link_to "Dashboard", '/admins/dashboard' %>
 <% else %>
     <%= link_to "Register as an admin", new_admin_path %>
 <% end %>
