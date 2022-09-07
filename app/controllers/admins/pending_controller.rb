@@ -1,6 +1,5 @@
 class Admins::PendingController < ApplicationController
-    before_action :require_logged_in,  :require_approved
-    # before_action :require_approved 
+    before_action :require_logged_in, :require_approved
     
     def index
         @admins_pending_approval = Admin.admins_pending_approval
