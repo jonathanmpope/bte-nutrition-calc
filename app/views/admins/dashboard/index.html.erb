@@ -1,7 +1,10 @@
 <% if current_admin %>
-    <h2>Welcome, <%=@current_admin.username%>!</h2>
+    <h2>Welcome, <%=current_admin.username%>!</h2>
     <%= link_to "Logout", '/logout', method: :delete %>
 <% end %>
+
+ <%= link_to "User Data", '/admins/user_data' %>
+ <%= link_to "Pending Admins", '/admins/pending_admins' %>
 
 <h3>Users</h3>
 <% @users.each do |user| %>
