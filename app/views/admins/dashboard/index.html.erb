@@ -1,5 +1,6 @@
-<% if @current_admin != nil %>
+<% if current_admin %>
     <h2>Welcome, <%=@current_admin.username%>!</h2>
+    <%= link_to "Logout", '/logout', method: :delete %>
 <% end %>
 
 <h3>Users</h3>

@@ -36,4 +36,10 @@ RSpec.describe "Admin login page" do
     expect(page).to have_content("Sorry, your credentials are bad")
     expect(current_path).to eq("/admins/login")
   end
+
+  it "has a link to register" do
+    visit '/admins/login'
+
+    expect(page).to have_content("Register as an admin")
+  end 
 end 

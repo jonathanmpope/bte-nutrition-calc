@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   get '/', to: 'persons#new'
   post '/', to: 'persons#create'
 
+  get '/admins/dashboard', to: 'admins/dashboard#index'
+
   get '/admins/login', to: 'admins_sessions#new'
   post '/admins/login', to: 'admins_sessions#create'
   delete '/logout', to: 'admins_sessions#destroy'
-
-  get '/admins/dashboard', to: 'admins/dashboard#index'
 
   resources :admins, only: [:new, :create]
 

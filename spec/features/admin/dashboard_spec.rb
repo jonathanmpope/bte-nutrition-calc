@@ -15,12 +15,10 @@ RSpec.describe "Admin Dashboard page" do
 
     click_on "Login"
 
-    visit '/admins/dashboard'
-
     expect(page).to have_content("Welcome, #{username}!")
   end
 
-  it "allows you to view content if you're an approved admin" do
+  it "will tell you that you need to log in" do
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 0)
 
     visit '/admins/dashboard'
@@ -28,7 +26,7 @@ RSpec.describe "Admin Dashboard page" do
     expect(page).to have_content("Sorry, you must logged in.")
   end
 
-  it "has a list of admins pending approval" do
+  xit "has a list of admins pending approval" do
     admin1 = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 0)
     admin2 = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 0)
     admin3 = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 0)
