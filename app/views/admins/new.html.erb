@@ -1,3 +1,9 @@
+<% if current_admin %>
+    <h2>You're already logged in!</h2>
+    <%= link_to "Logout", '/logout', method: :delete %>
+<% end %>
+
+<h3> Already have an admin account?</h3>
 <%= link_to "Login", '/admins/login' %>
 
 <%= form_with model: @admin, local: true do |form| %>
