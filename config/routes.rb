@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   get '/', to: 'persons#new'
   post '/', to: 'persons#create'
 
-  get '/admins/login', to: 'admins#login_form'
-  post '/admins/login', to: 'admins#login'
-
   get '/admins/dashboard', to: 'admins/dashboard#index'
+  get '/admins/pending_admins', to: 'admins/pending#index'
 
-  resources :admins, only: [:show, :new, :create ]
+  get '/admins/login', to: 'admins_sessions#new'
+  post '/admins/login', to: 'admins_sessions#create'
+  delete '/logout', to: 'admins_sessions#destroy'
+
+  resources :admins, only: [:new, :create]
 
   get '/:person_id/results', to: 'phases#create'
   get '/:person_id/results/:id', to: 'phases#show'

@@ -8,8 +8,8 @@ class PersonsController < ApplicationController
         if @person.save 
             update
         else 
-         redirect_to "/"
-         flash[:error] = @person.errors.full_messages
+            redirect_to "/"
+            flash[:error] = @person.errors.full_messages
         end 
     end 
 

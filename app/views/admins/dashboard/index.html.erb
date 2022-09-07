@@ -1,13 +1,12 @@
-<% if @current_admin != nil %>
-    <h2>Welcome, <%=@current_admin.username%>!</h2>
+<% if current_admin %>
+    <h2>Welcome, <%=current_admin.username%>!</h2>
+    <%= link_to "Logout", '/logout', method: :delete %>
 <% end %>
 
-<h3>Users</h3>
+ <%= link_to "User Data", '/admins/user_data' %>
+ <%= link_to "Pending Admins", '/admins/pending_admins' %>
+
+<%# <h3>Users</h3>
 <% @users.each do |user| %>
 <p> user.name </p>
-<% end %> 
-
-<h3>Admins Pending Approval</h3>
-<% @admins_pending_approval.each do |admin| %>
-<p> <% admin.username %> </p>
-<% end %>
+<%# <% end %>  %> %>

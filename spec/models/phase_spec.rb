@@ -30,55 +30,45 @@ RSpec.describe Phase, type: :model do
         end 
 
          describe 'total_kcal_calc' do 
-            xit 'calculates total kcal' do 
+            it 'calculates total kcal' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
-                
-                expect(phase1.total_kcal_calc(person)).to eq(4035.1199999999994)
+
+                expect(phase1.total_kcal_calc(person)[:total_kcal]).to eq(4035.1199999999994)
             end 
         end
 
         describe 'fat_calc' do 
-            xit 'calculates fats' do 
+            it 'calculates fats' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
-                phase1.total_kcal_calc(person)
-                phase1.protein_calc(person)
-                phase1.fat_calc(person)
-                phase1.carb_calc
-
-                expect(phase1.fat_calc(person)).to eq({:total_kcal=>4035.1199999999994, :protein_grams=>220.00000000000003, :protein_cals=>880.0000000000001, :protein_percent=>21.808521184004448, :fat_grams=>140.0, :fat_cals=>1260.0, :fat_percent=>31.225837149824542, :carb_grams=>473.77999999999986, :carb_cals=>1895.1199999999994, :carb_percent=>46.96564166617101})
+                
+                expect(phase1.total_kcal_calc(person)[:fat_cals]).to eq(1260.0)
+                expect(phase1.total_kcal_calc(person)[:fat_grams]).to eq(140.0)
+                expect(phase1.total_kcal_calc(person)[:fat_percent]).to eq(31.225837149824542)
             end 
         end
 
         describe 'protein_calc' do 
-            xit 'calculates protein' do 
+            it 'calculates protein' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
-                phase1.total_kcal_calc(person)
-                phase1.protein_calc(person)
-                phase1.fat_calc(person)
-                phase1.carb_calc
 
-                expect(phase1.protein_calc(person)).to eq({:total_kcal=>4035.1199999999994, :protein_grams=>220.00000000000003, :protein_cals=>880.0000000000001, :protein_percent=>21.808521184004448, :fat_grams=>140.0, :fat_cals=>1260.0, :fat_percent=>31.225837149824542, :carb_grams=>473.77999999999986, :carb_cals=>1895.1199999999994, :carb_percent=>46.96564166617101})
+                expect(phase1.total_kcal_calc(person)[:protein_cals]).to eq(880.0000000000001)
+                expect(phase1.total_kcal_calc(person)[:protein_grams]).to eq(220.00000000000003)
+                expect(phase1.total_kcal_calc(person)[:protein_percent]).to eq(21.808521184004448)
             end 
         end
 
          describe 'carb_calc' do 
-            xit 'calculates carbs' do 
+            it 'calculates carbs' do 
                 person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
-                phase1.total_kcal_calc(person)
-                phase1.protein_calc(person)
-                phase1.fat_calc(person)
-                phase1.carb_calc
-                
-                expect(phase1.carb_calc).to eq({:total_kcal=>4035.1199999999994, :protein_grams=>220.00000000000003, :protein_cals=>880.0000000000001, :protein_percent=>21.808521184004448, :fat_grams=>140.0, :fat_cals=>1260.0, :fat_percent=>31.225837149824542, :carb_grams=>473.77999999999986, :carb_cals=>1895.1199999999994, :carb_percent=>46.96564166617101})
+
+                expect(phase1.total_kcal_calc(person)[:carb_cals]).to eq(1895.1199999999994)
+                expect(phase1.total_kcal_calc(person)[:carb_grams]).to eq(473.77999999999986)
+                expect(phase1.total_kcal_calc(person)[:carb_percent]).to eq(46.96564166617101)
             end 
         end
     end 
-
-    describe 'class methods' do 
-    end 
-
 end 

@@ -32,4 +32,21 @@ RSpec.describe "Admin registration form" do
 
     expect(page).to have_content("Email can't be blank")
   end
+
+  it "has a link to login" do
+    visit '/admins/new'
+
+    expect(page).to have_content("Login")
+  end
+
+  it "has a link to logout and to the dashboard" do
+    admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
+    
+    allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
+
+    visit '/admins/new'
+
+    expect(page).to have_content("Logout")
+    expect(page).to have_content("Dashboard")
+  end
 end
