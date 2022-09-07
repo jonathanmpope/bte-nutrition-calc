@@ -30,4 +30,16 @@ RSpec.describe "Pending Admins page" do
         expect(page).to have_content("Sorry, you must be an approved admin to view all content.")
         expect(current_path).to eq('/admins/dashboard')
   end 
+
+  it "won't let you view the page if you aren't logged in" do
+        admin1 = Admin.create!(username:"funbucket132", email: 'test1@test.com', password: "test", status: 0)
+        admin2 = Admin.create!(username:"funbucket133", email: 'test2@test.com', password: "test", status: 0)
+        admin3 = Admin.create!(username:"funbucket134", email: 'test3@test.com', password: "test", status: 0)
+        admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 0)
+                
+        visit '/admins/pending_admins'
+         
+        expect(page).to have_content("Sorry, you must logged in.")
+        expect(current_path).to eq('/admins/login')
+  end 
 end
