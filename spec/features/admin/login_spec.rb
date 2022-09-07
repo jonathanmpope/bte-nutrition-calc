@@ -16,7 +16,7 @@ RSpec.describe "Admin login page" do
     click_on "Login"
     
     expect(page).to have_content("Welcome, #{username}!")
-    expect(current_path).to eq("/admins/#{admin.id}")
+    expect(current_path).to eq("/admins/dashboard")
   end
 
   it "doesn't allow you to login if you're an admin with bad credentials" do

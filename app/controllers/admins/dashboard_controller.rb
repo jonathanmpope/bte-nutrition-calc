@@ -2,7 +2,7 @@ class Admins::DashboardController < ApplicationController
     before_action :require_approved 
 
     def index
-        current_admin
+        # current_admin
         @users = Person.all 
         @admins_pending_approval = Admin.admins_pending_approval
     end 
