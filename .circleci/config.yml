@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.8.0
-  heroku: circleci/heroku@x.y # Use the Heroku orb in your config
+  # ruby: circleci/ruby@1.8.0
+  heroku: circleci/heroku@x.y 
 
 workflows:
     heroku_deploy:
@@ -9,7 +9,7 @@ workflows:
         - build
         - heroku/deploy-via-git:
             requires:
-            - build # only run deploy-via-git job if the build job has completed
+            - build 
             filters:
             branches:
                 only: main
