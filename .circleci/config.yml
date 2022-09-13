@@ -9,17 +9,17 @@ jobs:
       - image: circleci/ruby:2.7.4
         environment:
           PGHOST: localhost
-          PGUSER: bte-nutrition-calc
+          PGUSER: Nutrition_Calculator
           RAILS_ENV: test
       - image: postgres:14.4
         environment:
-          POSTGRES_USER: bte-nutrition-calc
-          POSTGRES_DB: bte-nutrition-calc_test
+          POSTGRES_USER: Nutrition_Calculator
+          POSTGRES_DB: Nutrition_Calculator_test
           POSTGRES_PASSWORD:
     steps:
       - checkout
       - run:
-          name: bte-nutrition-calc
+          name: Nutrition_Calculator
           command: bundle -v
       - ruby/bundle-install
 
