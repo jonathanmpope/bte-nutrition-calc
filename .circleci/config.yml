@@ -1,0 +1,29 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  build:
+    working_directory: ~/bte-nutrition-calc
+    docker:
+      - image: circleci/ruby:2.7.4
+        environment:
+          PGHOST: localhost
+          PGUSER: bte-nutrition-calc
+          RAILS_ENV: test
+      - image: postgres:14.4
+        environment:
+          POSTGRES_USER: bte-nutrition-calc
+          POSTGRES_DB: bte-nutrition-calc_test
+          POSTGRES_PASSWORD:
+    steps:
+      - checkout
+      - run:
+          name: bte-nutrition-calc
+          command: bundle -v
+      - ruby/bundle-install
+
+      - checkout
+      - run: bundle install --path vendor/bundle
+      - run: bundle exec rake db:migrate
+      - run: bundle exec rspec
