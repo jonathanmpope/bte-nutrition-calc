@@ -24,20 +24,6 @@ jobs:
           command: bundle -v
       - ruby/bundle-install
 
-
-  test:
-    docker:
-      - image: circleci/ruby:2.7.4
-     environment:
-          PGHOST: localhost
-          PGUSER: Nutrition_Calculator
-          RAILS_ENV: test
-      - image: postgres:14.4
-        environment:
-          POSTGRES_USER: Nutrition_Calculator
-          POSTGRES_DB: Nutrition_Calculator_test
-          POSTGRES_PASSWORD:
-      steps:
       - checkout
       - run: bundle install --path vendor/bundle
       - run: bundle exec rails db:migrate
@@ -52,9 +38,7 @@ workflows:
   build_and_test:     # The name of our workflow is "build_and_test"
     jobs:             # The list of jobs we run as part of this workflow.
       - build         # Run build first.
-      - test:         # Then run test,
-          requires:   # Test requires that build passes for it to run.
-            - build
+      
 # workflows:
 #     heroku_deploy:
 #     jobs:
