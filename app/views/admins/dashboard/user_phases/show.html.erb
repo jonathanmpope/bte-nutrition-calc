@@ -1,0 +1,38 @@
+<% if current_admin %>
+    <h2>Welcome, <%=current_admin.username%>!</h2>
+    <%= link_to "Logout", '/logout', method: :delete %>
+<% end %>
+
+ <%= link_to "User Data", '/admins/user_data' %>
+ <%= link_to "Pending Admins", '/admins/pending_admins' %>
+
+<h3>Phase Info</h3>
+
+<table>
+    <tr>
+        <th>Phase Name</th>
+        <th>Calories</th>
+        <th>Protein Grams</th>
+        <th>Protein Calories</th>
+        <th>Protein Percent</th>
+        <th>Fat Grams</th>
+        <th>Fat Calories</th>
+        <th>Fat Percent</th>
+        <th>Carb Grams</th>
+        <th>Carb Calories</th>
+        <th>Carb Percent</th>
+    </tr>
+    <tr>
+        <td><%= @phase.name %></td>
+        <td><%= @phase.kcal %></td>
+        <td><%= @phase.protein_grams %></td>
+        <td><%= @phase.protein_cals %></td>
+        <td><%= @phase.protein_percent %></td>
+        <td><%= @phase.fat_grams %></td>
+        <td><%= @phase.fat_cals %></td>
+        <td><%= @phase.fat_percent %></td>
+        <td><%= @phase.carb_grams %></td>
+        <td><%= @phase.carb_cals %></td>
+        <td><%= @phase.carb_percent %></td>
+    </tr>
+</table>
