@@ -31,4 +31,22 @@ RSpec.describe "Admin Dashboard page" do
     expect(page).to have_content("User Data")
     expect(page).to have_content("Pending Admins")
   end
+
+  it "has user data" do
+    admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
+    person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    
+    allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
+    
+    visit "/#{person.id}/results" 
+    visit '/admins/dashboard'
+     
+    expect(page).to have_content("Bob")
+    expect(page).to have_content("boaty@test.com")
+    expect(page).to have_content(200)
+    expect(page).to have_content("<10")
+    expect(page).to have_content(184.0)
+    expect(page).to have_content("performance")
+    expect(page).to have_content("12+")
+  end
 end 

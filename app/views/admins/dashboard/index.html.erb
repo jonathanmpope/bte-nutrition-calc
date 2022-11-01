@@ -6,7 +6,40 @@
  <%= link_to "User Data", '/admins/user_data' %>
  <%= link_to "Pending Admins", '/admins/pending_admins' %>
 
-<%# <h3>Users</h3>
-<% @users.each do |user| %>
-<p> user.name </p>
-<%# <% end %>  %> %>
+<h3>Users</h3>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Weight</th>
+        <th>Bodycomp</th>
+        <th>Goal</th>
+        <th>Lean Mass</th>
+        <th>Activity Level</th>
+        <th>Training Load</th>
+        <th>Phase 1</th>
+        <th>Phase 2</th>
+        <th>Phase 3</th>
+        <th>Phase 4</th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.weight %></td>
+            <td><%= user.bodycomp %></td>
+            <td><%= user.goal %></td>
+            <td><%= user.lean_mass %></td>
+            <td><%= user.activity_level %></td>
+            <td><%= user.training_load %></td>
+            <td><%= link_to 'Phase 1', "/admin/#{user.id}/#{user.phases[0]}" %></td>
+            <td><%= link_to 'Phase 2', "/admin/#{user.id}/#{user.phases[1]}" %></td>
+            <td><%= link_to 'Phase 3', "/admin/#{user.id}/#{user.phases[2]}" %></td>
+            <td><%= link_to 'Phase 4', "/admin/#{user.id}/#{user.phases[3]}" %></td>
+        </tr>
+    <% end %> 
+</table>
+
+
+
