@@ -49,4 +49,25 @@ RSpec.describe "Admin Dashboard page" do
     expect(page).to have_content("performance")
     expect(page).to have_content("12+")
   end
+
+  it 'lists partial matches as search results' do
+    admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
+    person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person2 = Person.create!(name:"Bambi", email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person3 = Person.create!(name:"Scooby", email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    
+    allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
+    
+    visit "/#{person1.id}/results" 
+    visit "/#{person2.id}/results" 
+    visit "/#{person3.id}/results" 
+    visit '/admins/dashboard'
+
+    fill_in 'Search', with: "Ba"
+    click_on("Search")
+
+    expect(page).to have_content(person2.name)
+    expect(page).to_not have_content(person1.name)
+    expect(page).to_not have_content(person3.name)
+  end
 end 
