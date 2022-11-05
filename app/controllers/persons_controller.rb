@@ -7,7 +7,8 @@ class PersonsController < ApplicationController
         @person = Person.create(person_params)
         if @person.save 
             update
-            UserMailer.with(user: @person).welcome_email.deliver_later
+            MailchimpFacade.add_subscriber(@person)
+            # UserMailer.with(user: @person).welcome_email.deliver_later
         else 
             redirect_to "/"
             flash[:error] = @person.errors.full_messages

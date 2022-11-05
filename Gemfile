@@ -36,6 +36,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem "chartkick"
 gem "figaro"
+gem 'MailchimpMarketing', '~> 3.0.80'
+gem 'faraday'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
