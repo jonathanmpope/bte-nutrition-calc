@@ -36,7 +36,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem "chartkick"
 gem "figaro"
-gem 'MailchimpMarketing', '~> 3.0.80'
 gem 'faraday'
 
 group :development, :test do

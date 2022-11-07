@@ -3,9 +3,16 @@ class Admins::DashboardController < ApplicationController
 
     def index
          @admins_pending_approval = Admin.admins_pending_approval
+         binding.pry 
         if params[:search].present?
             @users = Person.search_by_name(params[:search])
-         else
+        elsif params[:goal] != '' && params[:training_load] == ''
+            @users = Person.filter_by_track(params[:goal])
+        elsif params[:goal] == '' && params[:training_load] != ''
+            @users = Person.filter_by_activity_level(params[:training_load])
+        elsif params[:goal] != '' && params[:goal] != nil && params[:training_load] != '' && params[:training_load] != nil 
+            @users = Person.filter_by_goal_and_activity_level(params[:goal], params[:training_load])
+        else
             @users = Person.all 
         end
     end 

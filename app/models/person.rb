@@ -53,4 +53,17 @@ class Person < ApplicationRecord
     def self.search_by_name(name)
         where("name ILIKE ?", "%#{name}%")
     end 
+
+    def self.filter_by_track(track)
+        binding.pry 
+        where(goal: track)
+    end 
+
+    def self.filter_by_activity_level(activity_level)
+        where(activity_level: activity_level)
+    end 
+
+    def self.filter_by_goal_and_activity_level(goal, activity_level)
+        where(goal: track).where(activity_level: activity_level)
+    end 
 end

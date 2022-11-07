@@ -14,6 +14,12 @@
   <%= f.submit "Search" %>
 <% end %>
 
+<%= form_with url: "/admins/dashboard", method: :get, local: true do |form|%>
+    <%= form.select :goal, [['',''],["Performance",'performance'],["Fat Loss",'fat loss'],["Muscle Gain",'muscle gain']], required: true %>
+    <%= form.select :training_load, [['',''],["4 Hours or Less",'sub4'],["5 to 8 Hours",'5-8'],['9 to 12 Hours','9-12'], ['12+ Hours','12+']], required: true %>
+    <%= form.submit "Filter" %>
+<% end %>
+
 <table>
     <tr>
         <th>Username</th>
@@ -40,9 +46,11 @@
             <td><%= user.activity_level %></td>
             <td><%= user.training_load %></td>
             <td><%= link_to 'Phase 1', "/admins/dashboard/#{user.id}/#{user.phases[0].id}" %></td>
-            <td><%= link_to 'Phase 2', "/admins/dashboard/#{user.id}/#{user.phases[1].id}" %></td>
-            <td><%= link_to 'Phase 3', "/admins/dashboard/#{user.id}/#{user.phases[2].id}" %></td>
-            <td><%= link_to 'Phase 4', "/admins/dashboard/#{user.id}/#{user.phases[3].id}" %></td>
+            <% if user.goal == 'performance' %>
+                <td><%= link_to 'Phase 2', "/admins/dashboard/#{user.id}/#{user.phases[1].id}" %></td>
+                <td><%= link_to 'Phase 3', "/admins/dashboard/#{user.id}/#{user.phases[2].id}" %></td>
+                <td><%= link_to 'Phase 4', "/admins/dashboard/#{user.id}/#{user.phases[3].id}" %></td>
+            <% end %>
         </tr>
     <% end %> 
 </table>

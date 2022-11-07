@@ -1,6 +1,7 @@
 class MailchimpFacade
 
     def self.add_subscriber(user)
+        # need to update person model to split name into first / last
         user_details = {
         email_address: user.email,
         status: "subscribed",
@@ -10,16 +11,13 @@ class MailchimpFacade
         },
         };
 
-        conn = Faraday.new(
-            url: "https://#{ENV['mailchimp_server']}.api.mailchimp.com/3.0/lists/#{ENV['mailchimp_list_id']}/members/#{user.email}",
-            headers: {'Content-Type' => 'application/json', 'Authorization': "Bearer #{ENV['mailchimp_api_key']}"}
-        )
+        conn = MailchimpService.conn(user)
         
         response = conn.put() do |req|
             req.body = user_details.to_json
         end
 
         response = JSON.parse(response.body)
-    end 
-
+        binding.pry 
+    end  
 end 

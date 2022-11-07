@@ -7,7 +7,8 @@ class PersonsController < ApplicationController
         @person = Person.create(person_params)
         if @person.save 
             update
-            MailchimpFacade.add_subscriber(@person)
+            # Mailchimp and email welcome methods below 
+            # MailchimpFacade.add_subscriber(@person)
             # UserMailer.with(user: @person).welcome_email.deliver_later
         else 
             redirect_to "/"
