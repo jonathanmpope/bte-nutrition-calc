@@ -59,11 +59,11 @@ class Person < ApplicationRecord
         where(goal: track)
     end 
 
-    def self.filter_by_activity_level(activity_level)
-        where(activity_level: activity_level)
+    def self.filter_by_training_load(user_training_load)
+        where(training_load: user_training_load)
     end 
 
-    def self.filter_by_goal_and_activity_level(goal, activity_level)
-        where(goal: track).where(activity_level: activity_level)
+    def self.filter_by_goal_and_training_load(goal, user_training_load)
+        where(goal: track).where(training_load: user_training_loa)
     end 
 end
