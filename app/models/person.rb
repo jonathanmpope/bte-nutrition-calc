@@ -63,7 +63,7 @@ class Person < ApplicationRecord
         where(training_load: user_training_load)
     end 
 
-    def self.filter_by_goal_and_training_load(goal, user_training_load)
-        where(goal: track).where(training_load: user_training_loa)
+    def self.filter_by_goal_and_training_load(track, user_training_load)
+        where(goal: track).where(training_load: user_training_load)
     end 
 end
