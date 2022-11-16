@@ -1,5 +1,5 @@
 <%# <div style="background-image:url(<%= image_path('backg.jpeg'))"> %>
-<br>
+<div>
 <h1><%= @phase.name.titleize %> Phase Macros</h1>
 <h3>Goal: <%= @person.goal.titleize %></h3>
 <h3>Total calories: <%= @phase.kcal.round(0) %></h3>
@@ -120,3 +120,4 @@
 <% elsif @phase.name == 'Intermittent fasting - fasting days' %>
     <%= button_to "IF Phase - Non Fasting Days Macros", "/#{@person.id}/results/#{@person.phases[3].id}", method: :get %>
 <% end %>
+</div>

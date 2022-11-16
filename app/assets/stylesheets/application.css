@@ -56,7 +56,7 @@
  .container {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 200px auto auto 50px;
+    grid-template-rows: 160px auto auto 50px;
     grid-template-areas:
             "header"
             "nav"
@@ -170,10 +170,9 @@ label {
  }
 
  table {
-     border-collapse: collapse;
-     width: 50%;
-    margin: auto;
-    
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;  
  }
 
  td,
