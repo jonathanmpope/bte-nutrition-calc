@@ -34,14 +34,13 @@ RSpec.describe "Admin Dashboard page" do
 
   it "has user data" do
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
-    person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
     visit "/#{person.id}/results" 
     visit '/admins/dashboard'
      
-    expect(page).to have_content("Bob")
     expect(page).to have_content("boaty@test.com")
     expect(page).to have_content(200)
     expect(page).to have_content("<10")
@@ -52,9 +51,9 @@ RSpec.describe "Admin Dashboard page" do
 
   it 'lists partial matches as search results' do
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
-    person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    person2 = Person.create!(name:"Bambi", email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    person3 = Person.create!(name:"Scooby", email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
@@ -66,16 +65,16 @@ RSpec.describe "Admin Dashboard page" do
     fill_in 'Search', with: "Ba"
     click_on("Search")
 
-    expect(page).to have_content(person2.name)
-    expect(page).to_not have_content(person1.name)
-    expect(page).to_not have_content(person3.name)
+    expect(page).to have_content(person2.email)
+    expect(page).to_not have_content(person1.email)
+    expect(page).to_not have_content(person3.email)
   end
 
   it 'allows you to filter by goal' do
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
-    person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    person2 = Person.create!(name:"Bambi", email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    person3 = Person.create!(name:"Scooby", email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
@@ -87,16 +86,16 @@ RSpec.describe "Admin Dashboard page" do
     select("Performance", from: "goal")
     click_on("Filter")
 
-    expect(page).to_not have_content(person2.name)
-    expect(page).to have_content(person1.name)
-    expect(page).to have_content(person3.name)
+    expect(page).to_not have_content(person2.email)
+    expect(page).to have_content(person1.email)
+    expect(page).to have_content(person3.email)
   end
 
   it 'allows you to filter by activity level' do
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
-    person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"5-8", fc_pref:"fats", multiplier:12.64)
-    person2 = Person.create!(name:"Bambi", email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    person3 = Person.create!(name:"Scooby", email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"5-8", fc_pref:"fats", multiplier:12.64)
+    person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
@@ -108,16 +107,16 @@ RSpec.describe "Admin Dashboard page" do
     select("12+ Hours", from: "training_load")
     click_on("Filter")
 
-    expect(page).to have_content(person2.name)
-    expect(page).to_not have_content(person1.name)
-    expect(page).to have_content(person3.name)
+    expect(page).to have_content(person2.email)
+    expect(page).to_not have_content(person1.email)
+    expect(page).to have_content(person3.email)
   end
 
   it 'allows you to filter by goal and activity level' do
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
-    person1 = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"5-8", fc_pref:"fats", multiplier:12.64)
-    person2 = Person.create!(name:"Bambi", email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    person3 = Person.create!(name:"Scooby", email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"5-8", fc_pref:"fats", multiplier:12.64)
+    person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
@@ -130,8 +129,8 @@ RSpec.describe "Admin Dashboard page" do
     select("12+ Hours", from: "training_load")
     click_on("Filter")
 
-    expect(page).to_not have_content(person2.name)
-    expect(page).to_not have_content(person1.name)
-    expect(page).to have_content(person3.name)
+    expect(page).to_not have_content(person2.email)
+    expect(page).to_not have_content(person1.email)
+    expect(page).to have_content(person3.email)
   end
 end 

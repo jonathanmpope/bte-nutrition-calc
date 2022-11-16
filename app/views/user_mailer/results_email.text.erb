@@ -1,0 +1,7 @@
+Your Results
+
+# Goal: <%= @user.goal.titleize %>
+
+<% @user.phases.each do |phase| %>
+    <%= phase.name.titleize %> Phase Macros can be viewed at this link: <%= "https://bte-nutrition-calculator.herokuapp.com/#{@user.id}/results/#{phase.id}" %>
+<% end %>

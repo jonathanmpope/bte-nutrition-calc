@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the person new page' do 
     it 'should have an empty page with lots of forms' do
         visit '/'
-        expect(page).to have_content("BTE Nutrition Calculator")
+        expect(page).to have_content("Results will display on the next page(s)")
     end  
 
     it 'should have forms you can fill out' do
