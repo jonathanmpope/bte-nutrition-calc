@@ -3,13 +3,21 @@ require 'rails_helper'
 RSpec.describe 'the results page' do
 
     it 'should have a results page for a goal of performance' do
-        person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-        
-        visit "/#{person.id}/results"
+        visit '/'
+
+        fill_in("Email", with:"test@test.com")
+        fill_in("Weight", with:200)
+        choose(id="sex_male")
+        select("Less than 10%", from: "bodycomp")
+        select("Moderate", from: "activity_level")
+        select("9 to 12 Hours", from: "training_load")
+        select("Prefer More Fats", from: "fc_pref")
+        select("Performance", from: "goal")
+        click_button("Submit")
 
         expect(page).to have_content("Goal: Performance")
         expect(page).to have_content("Performance Phase Macros")
-        expect(page).to have_content("Total calories: 2326")
+        expect(page).to have_content("Total calories: 3867")
         expect(page).to have_content("Visual macro breakdown (hover for details)")
         expect(page).to have_content("Macros: 3 Meals Per Day")
         expect(page).to have_content("Macros: 4 Meals Per Day")
@@ -18,13 +26,21 @@ RSpec.describe 'the results page' do
     end  
 
        it 'should have a results page for a goal of fat loss' do
-        person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-        
-        visit "/#{person.id}/results"
+        visit '/'
+
+        fill_in("Email", with:"test@test.com")
+        fill_in("Weight", with:200)
+        choose(id="sex_male")
+        select("Less than 10%", from: "bodycomp")
+        select("Moderate", from: "activity_level")
+        select("9 to 12 Hours", from: "training_load")
+        select("Prefer More Fats", from: "fc_pref")
+        select("Fat Loss", from: "goal")
+        click_button("Submit")
         
         expect(page).to have_content("Goal: Fat Loss")
         expect(page).to have_content("Fat Loss Phase Macros")
-        expect(page).to have_content("Total calories: 2326")
+        expect(page).to have_content("Total calories: 3412")
         expect(page).to have_content("Visual macro breakdown (hover for details)")
         expect(page).to have_content("Macros: 3 Meals Per Day")
         expect(page).to have_content("Macros: 4 Meals Per Day")
@@ -33,9 +49,17 @@ RSpec.describe 'the results page' do
     end 
     
     it 'should have a second page when results is selected as the goal' do
-        person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-        
-        visit "/#{person.id}/results"
+        visit '/'
+
+        fill_in("Email", with:"test@test.com")
+        fill_in("Weight", with:200)
+        choose(id="sex_male")
+        select("Less than 10%", from: "bodycomp")
+        select("Moderate", from: "activity_level")
+        select("9 to 12 Hours", from: "training_load")
+        select("Prefer More Fats", from: "fc_pref")
+        select("Performance", from: "goal")
+        click_button("Submit")
 
         expect(page).to have_button("Keto Phase Macros")
 

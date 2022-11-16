@@ -1,4 +1,9 @@
 require 'rails_helper'
+require 'application_helper'
+
+RSpec.configure do |c|
+  c.include ApplicationHelper
+end
 
 RSpec.describe "Admin Dashboard page" do
   it "allows you to view content if you're an approved admin" do
@@ -33,12 +38,12 @@ RSpec.describe "Admin Dashboard page" do
   end
 
   it "has user data" do
+    include ApplicationHelper
     admin = Admin.create!(username:"funbucket13", email: 'test@test.com', password: "test", status: 1)
     person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    
+    performance_phases_creator(person)
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
-    visit "/#{person.id}/results" 
     visit '/admins/dashboard'
      
     expect(page).to have_content("boaty@test.com")
@@ -54,12 +59,12 @@ RSpec.describe "Admin Dashboard page" do
     person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    
+    performance_phases_creator(person1)
+    performance_phases_creator(person2)
+    performance_phases_creator(person3)
+
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
-    
-    visit "/#{person1.id}/results" 
-    visit "/#{person2.id}/results" 
-    visit "/#{person3.id}/results" 
+  
     visit '/admins/dashboard'
 
     fill_in 'Search', with: "Ba"
@@ -75,12 +80,13 @@ RSpec.describe "Admin Dashboard page" do
     person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    
+    performance_phases_creator(person1)
+    non_performance_phases_creator(person2)
+    performance_phases_creator(person3)
+
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
-    visit "/#{person1.id}/results" 
-    visit "/#{person2.id}/results" 
-    visit "/#{person3.id}/results" 
+     
     visit '/admins/dashboard'
 
     select("Performance", from: "goal")
@@ -96,12 +102,13 @@ RSpec.describe "Admin Dashboard page" do
     person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"5-8", fc_pref:"fats", multiplier:12.64)
     person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
-    
+    performance_phases_creator(person1)
+    non_performance_phases_creator(person2)
+    performance_phases_creator(person3)
+
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
-    visit "/#{person1.id}/results" 
-    visit "/#{person2.id}/results" 
-    visit "/#{person3.id}/results" 
+    
     visit '/admins/dashboard'
 
     select("12+ Hours", from: "training_load")
@@ -117,12 +124,12 @@ RSpec.describe "Admin Dashboard page" do
     person1 = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"5-8", fc_pref:"fats", multiplier:12.64)
     person2 = Person.create!(email:"bambi@test.com", weight:190, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
     person3 = Person.create!(email:"scooty@test.com", weight:280, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+    performance_phases_creator(person1)
+    non_performance_phases_creator(person2)
+    performance_phases_creator(person3)
     
     allow_any_instance_of(ApplicationController).to receive(:current_admin).and_return(admin)
     
-    visit "/#{person1.id}/results" 
-    visit "/#{person2.id}/results" 
-    visit "/#{person3.id}/results" 
     visit '/admins/dashboard'
     
     select("Performance", from: "goal")
