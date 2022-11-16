@@ -45,11 +45,13 @@
             <td><%= user.lean_mass %></td>
             <td><%= user.activity_level %></td>
             <td><%= user.training_load %></td>
-            <td><%= link_to 'Phase 1', "/admins/dashboard/#{user.id}/#{user.phases[0].id}" %></td>
-            <% if user.goal == 'performance' %>
-                <td><%= link_to 'Phase 2', "/admins/dashboard/#{user.id}/#{user.phases[1].id}" %></td>
-                <td><%= link_to 'Phase 3', "/admins/dashboard/#{user.id}/#{user.phases[2].id}" %></td>
-                <td><%= link_to 'Phase 4', "/admins/dashboard/#{user.id}/#{user.phases[3].id}" %></td>
+            <% if user.phases.count >= 1 %>
+                <td><%= link_to 'Phase 1', "/admins/dashboard/#{user.id}/#{user.phases[0].id}" %></td>
+                <% if user.phases.count >= 2 %>
+                    <td><%= link_to 'Phase 2', "/admins/dashboard/#{user.id}/#{user.phases[1].id}" %></td>
+                    <td><%= link_to 'Phase 3', "/admins/dashboard/#{user.id}/#{user.phases[2].id}" %></td>
+                    <td><%= link_to 'Phase 4', "/admins/dashboard/#{user.id}/#{user.phases[3].id}" %></td>
+                <% end %>
             <% end %>
         </tr>
     <% end %> 
