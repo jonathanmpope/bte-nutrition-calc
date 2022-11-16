@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Your Results</h2>
+    <h3>Goal: <%= @user.goal.titleize %></h3>
+    <% @user.phases.each do |phase| %>
+      <h1><%= phase.name.titleize %> Phase Macros</h1>
+      <h3>Total calories: <%= phase.kcal.round(0) %></h3>
+
+      <table>
+          <tr>
+              <th>Nutrient</th>
+              <th>Grams</th>
+              <th>Calories</th>
+              <th>Percent</th>
+          </tr>
+          <tr>
+              <td>Protein</td>
+              <td><%= phase.protein_grams.round(0) %></td>
+              <td><%= phase.protein_cals.round(0) %></td>
+              <td><%= phase.protein_percent.round(0) %></td>
+          </tr>
+          <tr>
+              <td>Fats</td>
+              <td><%= phase.fat_grams.round(0) %></td>
+              <td><%= phase.fat_cals.round(0) %></td>
+              <td><%= phase.fat_percent.round(0) %></td>
+          </tr>
+          <tr>
+              <td>Carbohydrates</td>
+              <td><%= phase.carb_grams.round(0) %></td>
+              <td><%= phase.carb_cals.round(0) %></td>
+              <td><%= phase.carb_percent.round(0) %></td>
+          </tr>
+      </table>
+      <br>
+      <h2>Macros: 3 Meals Per Day </h2>
+      <table>
+          <tr>
+              <th>Nutrient</th>
+              <th>Grams / Meal</th>
+              <th>Servings / Meal</th>
+          </tr>
+          <tr>
+              <td>Protein</td>
+              <td><%= phase.macros_per_meal_3[:protein_grams].round(0) %></td>
+              <td><%= ((phase.protein_grams / 25) / 3).round(1) %></td>
+          </tr>
+          <tr>
+              <td>Fats</td>
+              <td><%= phase.macros_per_meal_3[:fat_grams].round(0) %></td>
+              <td><%= ((phase.fat_grams / 10) / 3).round(1) %></td>
+          </tr>
+          <tr>
+              <td>Carbohydrates</td>
+              <td><%= phase.macros_per_meal_3[:carb_grams].round(0) %></td>
+              <td><%= ((phase.carb_grams / 30) / 3).round(1) %></td>
+          </tr>
+      </table>
+      <h3>Serving Sizes:</h3>
+          <ul>
+              <li><strong>Protein</strong> = One palm, or around 3.5-4 ounces cooked </li>
+              <li><Strong>Carbs</Strong> = One cupped handful, or around 1/2 cup cooked </li>
+              <li><Strong>Fats</Strong> = One thumb, or around 1oz raw weight </li>
+          </ul>
+      <h2>Macros: 4 Meals Per Day </h2>
+      <table>
+          <tr>
+              <th>Nutrient</th>
+              <th>Grams / Meal</th>
+              <th>Servings / Meal</th>
+          </tr>
+          <tr>
+              <td>Protein</td>
+              <td><%= phase.macros_per_meal_4[:protein_grams].round(0) %></td>
+              <td><%= ((phase.protein_grams / 25) / 4).round(1) %></td>
+          </tr>
+          <tr>
+              <td>Fats</td>
+              <td><%= phase.macros_per_meal_4[:fat_grams].round(0) %></td>
+              <td><%= ((phase.fat_grams / 10) / 4).round(1) %></td>
+          </tr>
+          <tr>
+              <td>Carbohydrates</td>
+              <td><%= phase.macros_per_meal_4[:carb_grams].round(0) %></td>
+              <td><%= ((phase.carb_grams / 30) / 4).round(1) %></td>
+          </tr>
+      </table>
+      <br>
+      <h2>Macros: 5 Meals Per Day </h2>
+      <table>
+          <tr>
+              <th>Nutrient</th>
+              <th>Grams / Meal</th>
+              <th>Servings / Meal</th>
+          </tr>
+          <tr>
+              <td>Protein</td>
+              <td><%= phase.macros_per_meal_5[:protein_grams].round(0) %></td>
+              <td><%= ((phase.protein_grams / 25) / 5).round(1) %></td>
+          </tr>
+          <tr>
+              <td>Fats</td>
+              <td><%= phase.macros_per_meal_5[:fat_grams].round(0) %></td>
+              <td><%= ((phase.fat_grams / 10) / 5).round(1) %></td>
+          </tr>
+          <tr>
+              <td>Carbohydrates</td>
+              <td><%= phase.macros_per_meal_5[:carb_grams].round(0) %></td>
+              <td><%= ((phase.carb_grams / 30) / 5).round(1) %></td>
+          </tr>
+      </table>
+    <% end %>
+  </body>
+</html>
