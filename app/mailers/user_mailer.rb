@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-    # default from: 'team@buildingtheelite.com'
 
   def results_email
     @user = params[:user] 

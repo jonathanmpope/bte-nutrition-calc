@@ -7,7 +7,6 @@ RSpec.describe 'the results page' do
         
         visit "/#{person.id}/results"
 
-        expect(page).to have_content("BTE Nutrition Calculator")
         expect(page).to have_content("Goal: Performance")
         expect(page).to have_content("Performance Phase Macros")
         expect(page).to have_content("Total calories: 2326")
@@ -23,7 +22,6 @@ RSpec.describe 'the results page' do
         
         visit "/#{person.id}/results"
         
-        expect(page).to have_content("BTE Nutrition Calculator")
         expect(page).to have_content("Goal: Fat Loss")
         expect(page).to have_content("Fat Loss Phase Macros")
         expect(page).to have_content("Total calories: 2326")

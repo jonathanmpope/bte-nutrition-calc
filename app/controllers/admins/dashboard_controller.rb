@@ -4,7 +4,7 @@ class Admins::DashboardController < ApplicationController
     def index
         @admins_pending_approval = Admin.admins_pending_approval
         if params[:search].present?
-            @users = Person.search_by_name(params[:search])
+            @users = Person.search_by_email(params[:search])
         elsif params[:goal] != '' && params[:training_load] == ''
             @users = Person.filter_by_track(params[:goal])
         elsif params[:goal] == '' && params[:training_load] != ''

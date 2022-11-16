@@ -84,7 +84,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
 config.action_mailer.delivery_method = :smtp
-host = 'bte-nutrition-calculator.com'
+host = 'bte-nutrition-calculator.herokuapp.com'
 config.action_mailer.default_url_options = { :host => host }
 
 # SMTP settings for gmail

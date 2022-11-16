@@ -49,8 +49,8 @@ class Person < ApplicationRecord
         @lean_mass = lean_mass_mult * weight
     end
 
-    def self.search_by_name(name)
-        where("name ILIKE ?", "%#{name}%")
+    def self.search_by_email(search_phrase)
+        where("email ILIKE ?", "%#{search_phrase}%")
     end 
 
     def self.filter_by_track(track)

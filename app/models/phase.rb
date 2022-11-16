@@ -72,9 +72,9 @@ class Phase < ApplicationRecord
 
     def phase2_calcs(person)
         phase2_macro_hash = {}
-        phase2_macro_hash[:protein_grams] = person.weight * 1.1
+        phase2_macro_hash[:protein_grams] = person.weight * 1
         phase2_macro_hash[:protein_cals] = (phase2_macro_hash[:protein_grams] * 4)
-        phase2_macro_hash[:fat_grams] = person.weight * 1.25
+        phase2_macro_hash[:fat_grams] = person.weight * 1.75
         phase2_macro_hash[:fat_cals] = (phase2_macro_hash[:fat_grams] * 9)
         phase2_macro_hash[:carb_grams] = 50.0
         phase2_macro_hash[:carb_cals] = (phase2_macro_hash[:carb_grams] * 4)
