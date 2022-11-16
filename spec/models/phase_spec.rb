@@ -21,7 +21,7 @@ RSpec.describe Phase, type: :model do
     describe 'instance methods' do 
         describe 'fc_pref_conversion' do 
             it 'turns fat or carb preference into a multiplier' do 
-                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+                person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
                 phase1 = person.phases.create!(name: person.goal)
                 phase1.total_kcal_calc(person)
 
@@ -31,7 +31,7 @@ RSpec.describe Phase, type: :model do
 
          describe 'total_kcal_calc' do 
             it 'calculates total kcal' do 
-                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
+                person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
 
                 expect(phase1.total_kcal_calc(person)[:total_kcal]).to eq(4035.1199999999994)
@@ -40,7 +40,7 @@ RSpec.describe Phase, type: :model do
 
         describe 'fat_calc' do 
             it 'calculates fats' do 
-                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
+                person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
                 
                 expect(phase1.total_kcal_calc(person)[:fat_cals]).to eq(1260.0)
@@ -51,7 +51,7 @@ RSpec.describe Phase, type: :model do
 
         describe 'protein_calc' do 
             it 'calculates protein' do 
-                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
+                person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
 
                 expect(phase1.total_kcal_calc(person)[:protein_cals]).to eq(880.0000000000001)
@@ -62,7 +62,7 @@ RSpec.describe Phase, type: :model do
 
          describe 'carb_calc' do 
             it 'calculates carbs' do 
-                person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
+                person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:21.929999999999996)
                 phase1 = person.phases.create!(name: person.goal)
 
                 expect(phase1.total_kcal_calc(person)[:carb_cals]).to eq(1895.1199999999994)

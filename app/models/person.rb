@@ -1,6 +1,5 @@
 class Person < ApplicationRecord
     has_many :phases
-    validates_presence_of :name
     validates_presence_of :email
     validates_presence_of :weight
     validates_presence_of :bodycomp
