@@ -6,7 +6,54 @@
  <%= link_to "User Data", '/admins/user_data' %>
  <%= link_to "Pending Admins", '/admins/pending_admins' %>
 
-<%# <h3>Users</h3>
-<% @users.each do |user| %>
-<p> user.name </p>
-<%# <% end %>  %> %>
+<h3>Users</h3>
+
+<%= form_with url: "/admins/dashboard", method: :get, local: true do |f| %>
+  <%= f.label :search %>
+  <%= f.text_field :search %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<%= form_with url: "/admins/dashboard", method: :get, local: true do |form|%>
+    <%= form.select :goal, [['',''],["Performance",'performance'],["Fat Loss",'fat loss'],["Muscle Gain",'muscle gain']], required: true %>
+    <%= form.select :training_load, [['',''],["4 Hours or Less",'sub4'],["5 to 8 Hours",'5-8'],['9 to 12 Hours','9-12'], ['12+ Hours','12+']], required: true %>
+    <%= form.submit "Filter" %>
+<% end %>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Weight</th>
+        <th>Bodycomp</th>
+        <th>Goal</th>
+        <th>Lean Mass</th>
+        <th>Activity Level</th>
+        <th>Training Load</th>
+        <th>Phase 1</th>
+        <th>Phase 2</th>
+        <th>Phase 3</th>
+        <th>Phase 4</th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.weight %></td>
+            <td><%= user.bodycomp %></td>
+            <td><%= user.goal %></td>
+            <td><%= user.lean_mass %></td>
+            <td><%= user.activity_level %></td>
+            <td><%= user.training_load %></td>
+            <td><%= link_to 'Phase 1', "/admins/dashboard/#{user.id}/#{user.phases[0].id}" %></td>
+            <% if user.goal == 'performance' %>
+                <td><%= link_to 'Phase 2', "/admins/dashboard/#{user.id}/#{user.phases[1].id}" %></td>
+                <td><%= link_to 'Phase 3', "/admins/dashboard/#{user.id}/#{user.phases[2].id}" %></td>
+                <td><%= link_to 'Phase 4', "/admins/dashboard/#{user.id}/#{user.phases[3].id}" %></td>
+            <% end %>
+        </tr>
+    <% end %> 
+</table>
+
+
+

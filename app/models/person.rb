@@ -49,4 +49,21 @@ class Person < ApplicationRecord
         bodycomp == "20+" ? lean_mass_mult = 0.75 : nil
         @lean_mass = lean_mass_mult * weight
     end
+
+    def self.search_by_name(name)
+        where("name ILIKE ?", "%#{name}%")
+    end 
+
+    def self.filter_by_track(track)
+        binding.pry 
+        where(goal: track)
+    end 
+
+    def self.filter_by_training_load(user_training_load)
+        where(training_load: user_training_load)
+    end 
+
+    def self.filter_by_goal_and_training_load(track, user_training_load)
+        where(goal: track).where(training_load: user_training_load)
+    end 
 end

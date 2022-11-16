@@ -17,6 +17,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module NutritionCalculator
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -29,5 +30,7 @@ module NutritionCalculator
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.action_mailer.preview_path = "#{Rails.root}/test/mailers/previews"
+
   end
 end
