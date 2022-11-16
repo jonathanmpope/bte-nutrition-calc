@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the results page' do
 
     it 'should have a results page for a goal of performance' do
-        person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+        person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
         
         visit "/#{person.id}/results"
 
@@ -19,7 +19,7 @@ RSpec.describe 'the results page' do
     end  
 
        it 'should have a results page for a goal of fat loss' do
-        person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+        person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"fat loss", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
         
         visit "/#{person.id}/results"
         
@@ -35,7 +35,7 @@ RSpec.describe 'the results page' do
     end 
     
     it 'should have a second page when results is selected as the goal' do
-        person = Person.create!(name:"Bob", email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
+        person = Person.create!(email:"boaty@test.com", weight:200, bodycomp:"<10", lean_mass:184.0, goal:"performance", activity_level:"moderate", training_load:"12+", fc_pref:"fats", multiplier:12.64)
         
         visit "/#{person.id}/results"
 

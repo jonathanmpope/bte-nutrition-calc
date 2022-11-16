@@ -9,7 +9,7 @@ RSpec.describe 'the person new page' do
     it 'should have forms you can fill out' do
         visit '/'
 
-        fill_in("Name", with:"Testy")
+        # fill_in("Name", with:"Testy")
         fill_in("Email", with:"test@test.com")
         fill_in("Weight", with:180)
         choose(id="sex_male")
@@ -20,13 +20,13 @@ RSpec.describe 'the person new page' do
         select("Performance", from: "goal")
         click_button("Submit")
 
-        expect(page).to have_content("Testy")
+        expect(page).to have_content("Performance")
     end 
 
     it 'should not allow you to submit a form with an empty area' do
         visit '/'
 
-        fill_in("Name", with:"Testy")
+        # fill_in("Name", with:"Testy")
         fill_in("Email", with:"test@test.com")
         choose(id="sex_male")
         select("Less than 10%", from: "bodycomp")

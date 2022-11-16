@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2022_09_06_193927) do
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.integer "weight"
     t.string "bodycomp"
