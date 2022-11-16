@@ -1,6 +1,7 @@
 <div>
 <br>
-<h1>Fill out the form to see your results</h1>
+<h3>Results will display on the next page,</h3>
+<h3>and be emailed to you</h3>
 <%= form_with url: '/', method: :post, local: true do |form|%>
     <%= form.label :email %>
     <%= form.text_field :email, required: true %>
