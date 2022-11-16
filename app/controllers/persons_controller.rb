@@ -18,6 +18,7 @@ class PersonsController < ApplicationController
 
     def update
         @person.update(multiplier: @person.multiplier_calc, lean_mass: @person.lean_mass_calc)
+        UserMailer.with(user: @person).results_email.deliver_later
         redirect_to "/#{@person.id}/results"
     end
 

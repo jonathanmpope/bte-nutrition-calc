@@ -3,7 +3,7 @@ class PhasesController < ApplicationController
     def show
         @person = Person.find(params[:person_id])
         @phase = Phase.find(params[:id])
-        UserMailer.with(user: @person).results_email.deliver_later
+        # UserMailer.with(user: @person).results_email.deliver_later
     end 
 
     def create 
