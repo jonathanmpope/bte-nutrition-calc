@@ -55,7 +55,6 @@ class Person < ApplicationRecord
     end 
 
     def self.filter_by_track(track)
-        binding.pry 
         where(goal: track)
     end 
 
