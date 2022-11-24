@@ -74,7 +74,7 @@ class Phase < ApplicationRecord
         phase2_macro_hash = {}
         phase2_macro_hash[:protein_grams] = person.weight * 1
         phase2_macro_hash[:protein_cals] = (phase2_macro_hash[:protein_grams] * 4)
-        phase2_macro_hash[:fat_grams] = person.weight * 1.75
+        phase2_macro_hash[:fat_grams] = person.weight * 1.5
         phase2_macro_hash[:fat_cals] = (phase2_macro_hash[:fat_grams] * 9)
         phase2_macro_hash[:carb_grams] = 50.0
         phase2_macro_hash[:carb_cals] = (phase2_macro_hash[:carb_grams] * 4)
@@ -100,18 +100,33 @@ class Phase < ApplicationRecord
         phase3_macro_hash_fast
     end
 
+    def fc_pref_conversion_2(person)
+        person.fc_pref == "fats" ? @fc_pref = 0.7 : nil 
+        person.fc_pref == "carbs" ? @fc_pref = 0.5 : nil 
+        person.fc_pref == "equal mix" ? @fc_pref = 0.6 : nil 
+        @fc_pref
+    end
+
     def phase3_calcs_nonfasting(person)
         phase3_macro_hash_nonfast = {}
+        fc_pref_conversion_2(person)
+        phase3_macro_hash_nonfast[:kcal] = person.lean_mass * person.multiplier
+
         phase3_macro_hash_nonfast[:protein_grams] = person.weight * 1.1
         phase3_macro_hash_nonfast[:protein_cals] = (phase3_macro_hash_nonfast[:protein_grams] * 4)
-        phase3_macro_hash_nonfast[:fat_grams] = person.weight * 0.5
+        
+        phase3_macro_hash_nonfast[:fat_grams] = (person.weight * @fc_pref)
+        # phase3_macro_hash_nonfast[:fat_grams] = person.weight * 0.5
         phase3_macro_hash_nonfast[:fat_cals] = (phase3_macro_hash_nonfast[:fat_grams] * 9)
-        phase3_macro_hash_nonfast[:carb_grams] = person.weight * 1.25
+
+        phase3_macro_hash_nonfast[:carb_grams] = ((phase3_macro_hash_nonfast[:kcal] - (phase3_macro_hash_nonfast[:protein_grams] * 4 + phase3_macro_hash_nonfast[:fat_grams] * 9)) / 4)
+        # phase3_macro_hash_nonfast[:carb_grams] = person.weight * 1.25
         phase3_macro_hash_nonfast[:carb_cals] = (phase3_macro_hash_nonfast[:carb_grams] * 4)
-        phase3_macro_hash_nonfast[:kcal] = (phase3_macro_hash_nonfast[:carb_grams] * 4) + (phase3_macro_hash_nonfast[:fat_grams] * 9) + (phase3_macro_hash_nonfast[:protein_grams] * 4)
+
+        # phase3_macro_hash_nonfast[:kcal] = (phase3_macro_hash_nonfast[:carb_grams] * 4) + (phase3_macro_hash_nonfast[:fat_grams] * 9) + (phase3_macro_hash_nonfast[:protein_grams] * 4)
         phase3_macro_hash_nonfast[:protein_percent] = (phase3_macro_hash_nonfast[:protein_grams] * 4) / phase3_macro_hash_nonfast[:kcal] * 100
         phase3_macro_hash_nonfast[:fat_percent] = (phase3_macro_hash_nonfast[:fat_grams] * 9) / phase3_macro_hash_nonfast[:kcal] * 100
         phase3_macro_hash_nonfast[:carb_percent] = (phase3_macro_hash_nonfast[:carb_grams] * 4) / phase3_macro_hash_nonfast[:kcal] * 100
-        phase3_macro_hash_nonfast
+        phase3_macro_hash_nonfast 
     end
 end 

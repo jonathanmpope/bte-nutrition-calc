@@ -7,7 +7,13 @@
     <h2>Your Results</h2>
     <h3>Goal: <%= @user.goal.titleize %></h3>
     <% @user.phases.each do |phase| %>
-      <h3><%= phase.name.titleize %> Phase Macros <%= link_to "can be viewed at this link", "https://bte-nutrition-calculator.herokuapp.com/#{@user.id}/results/#{phase.id}" %></h3>
+      <% if @phase.name == 'performance' || @phase.name == 'keto' %>
+        <h3><%= phase.name.titleize %> Phase Macros <%= link_to "can be viewed at this link", "https://bte-nutrition-calculator.herokuapp.com/#{@user.id}/results/#{phase.id}" %></h3>
+      <% elsif @phase.name == 'Intermittent fasting - fasting days' %>
+          <h3>IF: Fasting Days Macros <%= link_to "can be viewed at this link", "https://bte-nutrition-calculator.herokuapp.com/#{@user.id}/results/#{phase.id}" %></h3>
+      <% else %>
+          <h3>IF: Non-Fasting Days Macros <%= link_to "can be viewed at this link", "https://bte-nutrition-calculator.herokuapp.com/#{@user.id}/results/#{phase.id}" %></h3>
+      <% end %>
     <% end %>
   </body>
 </html>
