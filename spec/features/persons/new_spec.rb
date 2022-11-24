@@ -12,7 +12,7 @@ RSpec.describe 'the person new page' do
         # fill_in("Name", with:"Testy")
         fill_in("Email", with:"test@test.com")
         fill_in("Weight", with:180)
-        choose(id="sex_male")
+        # choose(id="sex_male")
         select("Less than 10%", from: "bodycomp")
         select("Moderate", from: "activity_level")
         select("9 to 12 Hours", from: "training_load")
@@ -28,7 +28,7 @@ RSpec.describe 'the person new page' do
 
         # fill_in("Name", with:"Testy")
         fill_in("Email", with:"test@test.com")
-        choose(id="sex_male")
+        # choose(id="sex_male")
         select("Less than 10%", from: "bodycomp")
         select("Moderate", from: "activity_level")
         select("9 to 12 Hours", from: "training_load")

@@ -7,7 +7,7 @@ RSpec.describe 'the results page' do
 
         fill_in("Email", with:"test@test.com")
         fill_in("Weight", with:200)
-        choose(id="sex_male")
+        # choose(id="sex_male")
         select("Less than 10%", from: "bodycomp")
         select("Moderate", from: "activity_level")
         select("9 to 12 Hours", from: "training_load")
@@ -30,7 +30,7 @@ RSpec.describe 'the results page' do
 
         fill_in("Email", with:"test@test.com")
         fill_in("Weight", with:200)
-        choose(id="sex_male")
+        # choose(id="sex_male")
         select("Less than 10%", from: "bodycomp")
         select("Moderate", from: "activity_level")
         select("9 to 12 Hours", from: "training_load")
@@ -53,7 +53,7 @@ RSpec.describe 'the results page' do
 
         fill_in("Email", with:"test@test.com")
         fill_in("Weight", with:200)
-        choose(id="sex_male")
+        # choose(id="sex_male")
         select("Less than 10%", from: "bodycomp")
         select("Moderate", from: "activity_level")
         select("9 to 12 Hours", from: "training_load")
@@ -70,12 +70,12 @@ RSpec.describe 'the results page' do
 
         click_button("IF Phase Macros")
 
-        expect(page).to have_content("Intermittent Fasting Fasting Days Phase Macros")
+        expect(page).to have_content("IF: Fasting Days Macros")
         expect(page).to have_button("IF Phase - Non Fasting Days Macros")
 
         click_button("IF Phase - Non Fasting Days Macros")
 
-        expect(page).to have_content("Intermittent Fasting Non Fasting Days Phase Macros")
+        expect(page).to have_content("Non-Fasting Days Macros")
     end
 
 end 
